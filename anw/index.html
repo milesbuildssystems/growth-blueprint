@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANW Corporation · Growth Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0B0B0B; --surface:#141414; --raised:#1C1C1C; --border:#272727;
+--text:#F2F2F2; --muted:#8A8A8A; --faint:#5C5C5C;
+--accent:#E8A020; --accent-light:#F5C860; --accent-dim:rgba(232,160,32,0.10);
+--danger:#E05252; --danger-dim:rgba(224,82,82,0.09);
+--success:#4CAF7D;
+--display:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+--body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+--mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);
+line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:72px 28px 96px;}
+.mono{font-family:var(--mono);}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;line-height:1.12;letter-spacing:-0.01em;}
+h1{font-size:clamp(34px,6vw,52px);margin:22px 0 20px;font-weight:700;}
+h1 .amber{color:var(--accent);}
+.lede{font-size:19px;color:var(--text);max-width:60ch;}
+.by{margin-top:34px;padding-top:22px;border-top:1px solid var(--border);
+display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted);}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;
+color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:3px 8px;}
+.mark{font-family:var(--display);font-weight:700;color:var(--text);}
+.mark b{color:var(--accent);}
+section{margin-top:72px;}
+h2{font-size:26px;margin:20px 0 18px;}
+p{margin:0 0 18px;max-width:64ch;}
+.muted{color:var(--muted);}
+strong{color:#fff;font-weight:600;}
+.amber-txt{color:var(--accent-light);font-weight:500;}
+/* metric row */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:26px 0 6px;}
+.metric{background:var(--surface);padding:20px 22px;}
+.metric .n{font-family:var(--display);font-size:28px;font-weight:600;
+font-variant-numeric:tabular-nums;color:var(--text);}
+.metric .n .u{font-size:15px;color:var(--muted);font-weight:500;}
+.metric .l{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+/* callout: the leak */
+.leak{background:var(--danger-dim);border:1px solid rgba(224,82,82,0.28);
+border-radius:10px;padding:26px 28px;margin:26px 0;}
+.leak .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+color:var(--danger);margin-bottom:12px;}
+.leak p:last-child{margin-bottom:0;}
+/* blueprint steps */
+.steps{display:flex;flex-direction:column;gap:2px;margin:26px 0;
+border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.step{background:var(--surface);padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;}
+.step + .step{border-top:1px solid var(--border);}
+.step .num{font-family:var(--mono);font-size:13px;color:var(--accent);
+border:1px solid var(--accent);border-radius:50%;width:34px;height:34px;
+display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;margin-top:2px;}
+.step h3{font-size:18px;margin:0 0 8px;color:#fff;}
+.step p{font-size:15px;color:var(--muted);margin:0;max-width:56ch;}
+.step p b{color:var(--text);}
+/* CTA */
+.cta{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:14px;padding:38px 34px;margin-top:30px;}
+.cta h2{margin-top:6px;}
+.offer{background:var(--accent-dim);border:1px solid rgba(232,160,32,0.32);
+border-radius:10px;padding:22px 24px;margin:22px 0;}
+.offer .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.offer p{margin:0;color:var(--text);}
+.qz{margin:24px 0 4px;}
+.qz .q{font-family:var(--display);font-weight:500;font-size:16px;color:#fff;margin-bottom:14px;}
+ul.opts{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:9px;}
+ul.opts li{padding-left:24px;position:relative;color:var(--muted);font-size:15px;}
+ul.opts li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;
+background:var(--accent);border-radius:50%;}
+.bands{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px;}
+.band{font-family:var(--mono);font-size:13px;color:var(--text);background:var(--surface);
+border:1px solid var(--border);border-radius:6px;padding:8px 14px;font-variant-numeric:tabular-nums;}
+.reply{margin-top:20px;font-size:15px;color:var(--muted);}
+.reply b{color:var(--accent-light);}
+.btn{display:inline-block;background:var(--accent);color:#0B0B0B;font-family:var(--display);
+font-weight:600;font-size:16px;text-decoration:none;padding:15px 30px;border-radius:8px;margin-top:8px;
+letter-spacing:-0.01em;transition:transform .15s ease,background .15s ease;}
+.btn:hover{background:var(--accent-light);transform:translateY(-1px);}
+.btn:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--accent);
+font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;padding:12px 20px;
+border:1px solid var(--accent);border-radius:8px;white-space:nowrap;
+transition:background .15s ease,transform .15s ease;}
+.btn-ghost:hover{background:var(--accent-dim);transform:translateY(-1px);}
+.btn-ghost:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+.research-cta{margin-top:26px;padding:20px 22px;border:1px dashed var(--border);border-radius:10px;
+background:var(--surface);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+.research-cta .rc-txt{font-size:14.5px;color:var(--muted);max-width:44ch;}
+.research-cta .rc-txt b{color:var(--text);font-family:var(--display);font-weight:600;}
+footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--border);
+font-size:14px;color:var(--muted);}
+footer .who{color:var(--text);font-family:var(--display);font-weight:500;font-size:16px;margin-bottom:8px;}
+.sample{position:fixed;top:14px;right:14px;font-family:var(--mono);font-size:10px;
+letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border:1px solid var(--border);
+border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:blur(4px);}
+@media (max-width:560px){.wrap{padding:52px 20px 72px;} .step{grid-template-columns:1fr;gap:12px;}}
+@media (prefers-reduced-motion:no-preference){
+.wrap>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;}
+.wrap>*:nth-child(2){animation-delay:.05s;} .wrap>section:nth-of-type(1){animation-delay:.1s;}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+}
+.tabs{display:flex;gap:2px;margin:0 0 10px;border-bottom:1px solid var(--border);}.tab{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap;}.tab:hover{color:var(--text);}.tab.active{color:var(--accent);border-bottom-color:var(--accent);}@media(max-width:560px){.tab{padding:10px 11px;font-size:11px;letter-spacing:0.04em;}}.reel{display:flex;gap:16px;align-items:center;margin:24px 0 6px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .15s,transform .15s;max-width:430px;}.reel:hover{border-color:var(--accent);transform:translateY(-1px);}.reel-static{cursor:default;}.reel-static:hover{border-color:var(--border);transform:none;}.reel-thumb{position:relative;width:74px;height:104px;border-radius:8px;flex:none;background:linear-gradient(150deg,#2c2c2c,#141414);border:1px solid var(--border);overflow:hidden;}.reel-thumb img{width:100%;height:100%;object-fit:cover;}.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;}.reel-ey{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}.reel-title{font-family:var(--display);font-weight:600;font-size:16px;color:var(--text);line-height:1.2;}.reel-views{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;}.reel-link{font-family:var(--display);font-weight:600;font-size:13px;color:var(--accent);margin-top:8px;}.btn-ghost{background:var(--raised);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:13px 22px;font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,0.35);transition:background .15s ease,color .15s ease,transform .15s ease;}.btn-ghost:hover{background:var(--accent);color:#0B0B0B;transform:translateY(-1px);}.anwcard{margin:24px 0 6px;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:460px;}.anwcard-logo{background:#fff;padding:20px 26px;}.anwcard-logo img{width:100%;height:auto;display:block;}.anwcard-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:11px 16px;background:var(--surface);}</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a class="tab active" href="index.html">Blueprint</a><a class="tab" href="research.html">Research</a><a class="tab" href="awareness.html">Awareness</a></nav>
+<div class="eyebrow">Prepared for Rickford Alexander · Growth Blueprint</div>
+<h1>You hold TWIC, TSA air cargo clearance, and active government contracts. The hospitals and agencies that need exactly that cannot find <span class="amber">any of it</span>.</h1>
+<p class="lede">You built ANW from one vehicle into a compliant, multi state medical and air cargo operation. That is the hard part, and you have done it. But when a hospital supply chain manager or a government procurement officer goes looking for a courier they can trust with a time critical medical run, what they find at anwaisystems.com is a &ldquo;launching soon&rdquo; page. The trust you earned in the field never reaches the person signing the contract. I went through your operation the way one of those buyers would, and this is exactly where it is slipping, and how to catch it.</p>
+<div class="anwcard"><div class="anwcard-logo"><img src="anw-logo.png" alt="ANW Corporation"></div><div class="anwcard-tag">Prepared for ANW Corporation &middot; Take the Risk. Earn the Trust.</div></div>
+<div class="by">
+<span class="badge">No pitch</span>
+<span>A growth blueprint I built for you, from <span class="mark">Miles Builds <b>Systems</b></span></span>
+</div>
+<div class="research-cta">
+<div class="rc-txt"><b>I did the homework before I wrote a word.</b> I mapped who actually signs a logistics contract, what they need to see before they trust a courier with a time critical medical run, and where ANW is invisible at that exact moment.</div>
+<a class="btn-ghost" href="research.html">See the research on your buyers →</a>
+</div>
+<section>
+<div class="eyebrow">What you've already built</div>
+<h2>The hard part is done.</h2>
+<p>Most companies chasing medical and government logistics contracts do not have what you have. You are TWIC credentialed, TSA cleared for air cargo, DOT compliant, HIPAA aware on medical runs, commercially insured with cargo coverage, and minority owned, already holding active government contracts and running four states. That is years of trust, earned in the field. It is the foundation everything else bolts onto, and you already have it.</p>
+<div class="metrics"><div class="metric"><div class="n">TWIC</div><div class="l">Credential held</div></div><div class="metric"><div class="n">TSA</div><div class="l">Air cargo cleared</div></div><div class="metric"><div class="n">HIPAA</div><div class="l">Aware, medical ops</div></div><div class="metric"><div class="n">Gov</div><div class="l">Active contracts</div></div></div>
+<p class="muted">All pulled from your public credentials and services. I did not guess your contract volume, that is one of the things I would rather you tell me.</p>
+</section>
+<section>
+<div class="eyebrow">Where the contracts slip away</div>
+<h2>Your credibility is real. Nothing online carries it to the buyer.</h2>
+<p>Here is how it works now. A hospital supply chain manager or an agency procurement officer decides who moves their time critical freight. Before they even take a call, they look you up. They want to see your credentials, your insurance, your coverage, proof you are a real operation and not one truck. Right now anwaisystems.com shows a &ldquo;launching soon&rdquo; placeholder. So there is nothing to verify, and the safe choice is to stay with the incumbent or call FedEx.</p>
+<div class="leak">
+<div class="tag">The leak</div>
+<p>You do the hard, credentialed, compliant work in the field, then hand the buyer nothing to confirm it. So every contract conversation starts from zero trust instead of from the proof you already earned. That is not an operations problem. You solved operations. It is the front door that was never built.</p>
+</div>
+<p>That is why the work comes in through referrals one month and goes quiet the next. The capability is real. Nothing online is catching the buyers searching for exactly it.</p>
+</section>
+<section>
+<div class="eyebrow">What this could be</div>
+<h2>Same operation. A front door that sells it.</h2>
+<p>Picture a procurement officer searching for a compliant medical courier in Atlanta and landing on a site that leads with your credentials, your coverage map, your insurance, and a quote form. They request a quote while they are warm, instead of bouncing to a competitor. You keep running the operation you already run. The front door turns that search into a booked contract, whether you are on the road that day or not.</p>
+</section>
+<section>
+<div class="eyebrow">How I'd build it</div>
+<h2>Three moves, in order.</h2>
+<div class="steps"><div class="step"><div class="num">1</div><div><h3>Build the credibility front door</h3><p>A real ANW site that leads with the proof a buyer needs to trust you, TWIC, TSA, DOT, HIPAA aware, insured, active government contracts, plus a quote request form. <b>Now buyers can verify you and reach you.</b></p></div></div><div class="step"><div class="num">2</div><div><h3>Capture and answer every quote fast</h3><p>A quote that lands does not sit in an inbox. It gets a fast, professional response and a follow up, because in logistics the first credible reply usually wins the contract. <b>Speed stops losing you work.</b></p></div></div><div class="step"><div class="num">3</div><div><h3>Connect it so nothing falls through</h3><p>Quote to follow up to signed contract, tracked in one place, so you see which industries and lanes actually convert and where to push. <b>One system, not a stack of missed messages.</b></p></div></div></div>
+<p class="muted">None of this asks you to run more trucks or become a marketer. It builds the part that was missing around the operation you already run.</p>
+</section>
+<div class="cta">
+<div class="eyebrow">If you want the full version</div>
+<h2>Want me to build this out for your exact setup?</h2>
+<p>This blueprint is the short version, built from the outside. If it is useful, I will record you a <strong>15 to 30 minute walkthrough</strong> of exactly how I would build ANW's front door and quote system, step by step, yours to keep either way.</p>
+<div class="offer">
+<div class="tag">One step to get it</div>
+<p>Fill out the 2 minute form so the walkthrough is about how <em>you</em> actually win contracts and where you are stuck, not generic advice. It also tells us both, straight up, whether this is even a fit.</p>
+</div>
+<div class="qz">
+<div class="q">The 2 minutes covers:</div>
+<ul class="opts">
+<li>How you win work right now (referrals, brokers, direct bids, government contracts)</li>
+<li>Which services and lanes you want more of</li>
+<li>The one bottleneck that is actually costing you</li>
+</ul>
+</div>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSft-UX6VBKRVwg-ePzOet_PS4mLzqzfCiBm4JGMr761Cmlz_g/viewform" target="_blank" rel="noopener">Build my custom plan</a>
+<p class="reply">Two minutes, tops. Qualify, and I record your Loom. If it is not a fit, I will tell you straight and point you the right way. <b>Either way, this is yours to keep.</b></p>
+</div>
+<footer>
+<div class="who">Miles · Miles Builds Systems</div>
+<p class="muted">I build the systems that turn a real operation's credibility and demand into booked work. Credibility to capture to follow up to signed contract, one owner, built around the business you already run. This blueprint was made for you. No charge, no catch.</p>
+</footer>
+</div>
+</body>
+</html>

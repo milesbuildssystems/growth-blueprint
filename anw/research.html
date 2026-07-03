@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Research · Miles Builds Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0B0B0B; --surface:#141414; --raised:#1C1C1C; --border:#272727;
+--text:#F2F2F2; --muted:#8A8A8A; --faint:#5C5C5C;
+--accent:#E8A020; --accent-light:#F5C860; --accent-dim:rgba(232,160,32,0.10);
+--danger:#E05252; --danger-dim:rgba(224,82,82,0.09);
+--success:#4CAF7D;
+--display:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+--body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+--mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);
+line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:72px 28px 96px;}
+a.back{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--muted);
+text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;
+border:1px solid var(--border);border-radius:6px;padding:8px 14px;transition:color .15s,border-color .15s;}
+a.back:hover{color:var(--accent);border-color:var(--accent);}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;line-height:1.14;letter-spacing:-0.01em;}
+h1{font-size:clamp(30px,5vw,44px);margin:20px 0 18px;font-weight:700;}
+h1 .amber{color:var(--accent);}
+.lede{font-size:18px;color:var(--text);max-width:62ch;}
+.lede em{color:var(--accent-light);font-style:normal;}
+section{margin-top:64px;}
+h2{font-size:25px;margin:18px 0 16px;}
+p{margin:0 0 18px;max-width:64ch;}
+.muted{color:var(--muted);}
+strong{color:#fff;font-weight:600;}
+em.hl{color:var(--accent-light);font-style:normal;font-weight:500;}
+/* avatar card */
+.avatar{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:12px;padding:28px 30px;margin:24px 0;}
+.avatar .who{font-family:var(--display);font-weight:600;font-size:20px;color:#fff;margin-bottom:4px;}
+.avatar .sub{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+color:var(--accent);margin-bottom:16px;}
+.avatar ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;}
+.avatar li{padding-left:24px;position:relative;color:var(--text);font-size:15.5px;}
+.avatar li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;
+background:var(--accent);border-radius:50%;}
+.avatar li b{color:#fff;font-weight:600;}
+.avatar .buy{margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
+font-size:16px;color:var(--text);}
+.avatar .buy b{color:var(--accent-light);font-family:var(--display);font-weight:600;}
+/* quotes */
+.quotes{display:flex;flex-direction:column;gap:12px;margin:22px 0;}
+.quote{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);
+border-radius:8px;padding:16px 20px;font-size:16px;color:var(--text);font-style:italic;}
+.quotes-note{font-size:14px;color:var(--muted);}
+/* content read */
+.read{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+padding:6px 26px;margin:22px 0;}
+.read .row{padding:18px 0;border-bottom:1px solid var(--border);}
+.read .row:last-child{border-bottom:none;}
+.read .k{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+color:var(--accent);margin-bottom:7px;}
+.read .v{font-size:15.5px;color:var(--text);margin:0;}
+.read .v b{color:#fff;font-weight:600;}
+/* path */
+.path{display:flex;flex-direction:column;gap:2px;margin:22px 0;
+border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.pstep{background:var(--surface);padding:18px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;}
+.pstep + .pstep{border-top:1px solid var(--border);}
+.pstep .num{font-family:var(--mono);font-size:12px;color:var(--muted);
+border:1px solid var(--border);border-radius:50%;width:30px;height:30px;
+display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;margin-top:1px;}
+.pstep .v{font-size:15.5px;color:var(--text);margin:0;}
+.pstep.brk{background:var(--danger-dim);}
+.pstep.brk .num{color:var(--danger);border-color:rgba(224,82,82,0.5);}
+.pstep.brk .v b{color:var(--danger);}
+.pstep .v b{color:#fff;font-weight:600;}
+.breakline{background:var(--danger-dim);border:1px solid rgba(224,82,82,0.28);border-radius:10px;
+padding:22px 26px;margin:22px 0;}
+.breakline .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+color:var(--danger);margin-bottom:10px;}
+.breakline p{margin:0;}
+/* honesty */
+.honest{background:var(--surface);border:1px dashed var(--border);border-radius:10px;padding:22px 26px;margin:22px 0;}
+.honest p{margin:0 0 12px;font-size:15px;color:var(--muted);}
+.honest p:last-child{margin-bottom:0;}
+.honest b{color:var(--text);}
+/* bottom cta back to blueprint */
+.tocta{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:14px;padding:32px 30px;margin-top:56px;text-align:left;}
+.btn{display:inline-block;background:var(--accent);color:#0B0B0B;font-family:var(--display);
+font-weight:600;font-size:16px;text-decoration:none;padding:15px 30px;border-radius:8px;margin-top:14px;
+letter-spacing:-0.01em;transition:transform .15s ease,background .15s ease;}
+.btn:hover{background:var(--accent-light);transform:translateY(-1px);}
+.btn:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--border);font-size:14px;color:var(--muted);}
+footer .who{color:var(--text);font-family:var(--display);font-weight:500;font-size:16px;margin-bottom:8px;}
+.mark{font-family:var(--display);font-weight:700;color:var(--text);}
+.mark b{color:var(--accent);}
+.sample{position:fixed;top:14px;right:14px;font-family:var(--mono);font-size:10px;
+letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border:1px solid var(--border);
+border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:blur(4px);}
+@media (max-width:560px){.wrap{padding:52px 20px 72px;} .pstep{grid-template-columns:auto 1fr;gap:14px;}}
+@media (prefers-reduced-motion:no-preference){
+.wrap>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;}
+.wrap>*:nth-child(3){animation-delay:.05s;} .wrap>section:nth-of-type(1){animation-delay:.1s;}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+}
+.ladder{display:flex;flex-direction:column;gap:2px;margin:22px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.rung{background:var(--surface);padding:14px 20px;display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:baseline;}
+.rung + .rung{border-top:1px solid var(--border);}
+.rung .stage{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);}
+.rung .line{font-size:15px;color:var(--text);margin:0;}
+.rung.here{background:var(--accent-dim);}
+.rung.here .stage{color:var(--accent);}
+.rung .tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);border-radius:3px;padding:1px 6px;margin-left:8px;vertical-align:middle;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--accent);font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;padding:12px 20px;border:1px solid var(--accent);border-radius:8px;white-space:nowrap;transition:background .15s ease,transform .15s ease;}
+.btn-ghost:hover{background:var(--accent-dim);transform:translateY(-1px);}
+.stagecard{background:linear-gradient(180deg,var(--raised),var(--surface));border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:16px 0;}
+.stagecard .sh{display:flex;align-items:center;gap:12px;}
+.stagecard .sn{font-family:var(--display);font-weight:600;font-size:20px;color:#fff;}
+.stagecard .temp{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:3px;padding:2px 8px;color:var(--muted);}
+.stagecard .blk{margin-top:14px;}
+.stagecard .lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
+.stagecard p{margin:0;font-size:15.5px;color:var(--text);}
+@media(max-width:560px){.rung{grid-template-columns:1fr;gap:4px;}}
+.tabs{display:flex;gap:2px;margin:0 0 10px;border-bottom:1px solid var(--border);}.tab{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap;}.tab:hover{color:var(--text);}.tab.active{color:var(--accent);border-bottom-color:var(--accent);}@media(max-width:560px){.tab{padding:10px 11px;font-size:11px;letter-spacing:0.04em;}}.reel{display:flex;gap:16px;align-items:center;margin:24px 0 6px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .15s,transform .15s;max-width:430px;}.reel:hover{border-color:var(--accent);transform:translateY(-1px);}.reel-thumb{position:relative;width:74px;height:104px;border-radius:8px;flex:none;background:linear-gradient(150deg,#2c2c2c,#141414);border:1px solid var(--border);overflow:hidden;}.reel-thumb img{width:100%;height:100%;object-fit:cover;}.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;}.reel-ey{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}.reel-title{font-family:var(--display);font-weight:600;font-size:16px;color:var(--text);line-height:1.2;}.reel-views{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;}.reel-link{font-family:var(--display);font-weight:600;font-size:13px;color:var(--accent);margin-top:8px;}.btn-ghost{background:var(--raised);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:13px 22px;font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,0.35);transition:background .15s ease,color .15s ease,transform .15s ease;}.btn-ghost:hover{background:var(--accent);color:#0B0B0B;transform:translateY(-1px);}</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="tabs"><a class="tab" href="index.html">Blueprint</a><a class="tab active" href="research.html">Research</a><a class="tab" href="awareness.html">Awareness</a></nav>
+<div class="eyebrow">The research · prepared for Rickford Alexander</div>
+<h1>Your buyers, decoded. Who actually signs the contract, and what they need to see <span class="amber">first</span>.</h1>
+<p class="lede">This is a map of the people on the other side of a logistics contract: who really makes the call, the exact things they need to trust a courier with time critical freight, and where ANW slips off their list before a quote ever happens. Read it like a cheat sheet. Everything here you can put to work in your next bid, your next call, your next page, whether we ever work together or not. I did the digging so you do not have to.</p>
+<section>
+<div class="eyebrow">Where your buyers are right now</div>
+<h2>The awareness ladder.</h2>
+<p>Most buyers who could use ANW are not cold, and not ready to sign today. They sit in the middle: they feel the risk in their current setup but have not been shown a courier they can trust with it. Here is the whole ladder.</p>
+<div class="ladder"><div class="rung"><div class="stage">Unaware</div><p class="line">Thinks their current courier is fine. No felt problem yet.</p></div><div class="rung here"><div class="stage">Problem-aware<span class="tag">most of your buyers</span></div><p class="line">Has felt it. A late delivery, a compliance scare, a carrier that went dark. They know the current setup is a risk.</p></div><div class="rung"><div class="stage">Solution-aware</div><p class="line">Knows specialized medical and time critical couriers exist. Comparing a few.</p></div><div class="rung"><div class="stage">Product-aware</div><p class="line">Knows ANW specifically. Has met Rickford or seen the name. Has not signed.</p></div><div class="rung"><div class="stage">Most-aware</div><p class="line">Ready to move freight with ANW the moment the path is clear.</p></div></div>
+<a class="btn-ghost" href="awareness.html">See what each stage means for you &rarr;</a>
+</section>
+<section>
+<div class="eyebrow">Who actually signs the contract</div>
+<h2>Who is actually on the other side of the quote request.</h2>
+<p>This is who signs off on moving your kind of freight. Not a demographic guess, the person your operation has to win over.</p>
+<div class="avatar">
+<div class="who">The manager whose job is on the line if a delivery fails</div>
+<div class="sub">Your core buyer</div>
+<ul><li>A hospital or health system supply chain manager, a lab or pharma logistics lead, or a government procurement officer. They own the outcome when a shipment is late or mishandled.</li><li>Risk averse by necessity. A missed STAT specimen or a broken cold chain is not an inconvenience, it is a patient impact and a compliance problem with <b>their</b> name on it.</li><li>Has been burned by an unreliable carrier before. Now they need proof, insurance, credentials, references, before they will even run a pilot lane.</li><li>Cares more about reliability, communication, and compliance than about the lowest price. They will pay for certainty.</li></ul>
+<div class="buy"><b>What they are really buying:</b> not delivery. They are buying &ldquo;this will never be the reason a patient waits or a contract is at risk.&rdquo; The relief of a courier they do not have to worry about.</div>
+</div>
+</section>
+<section>
+<div class="eyebrow">In their own words</div>
+<h2>The language they use (so your site and follow up can use it back).</h2>
+<p>Pulled from how logistics and procurement buyers talk about the couriers they trust and the ones they fire. When your site and your follow up say these back to them, they feel understood before you have quoted a thing.</p>
+<div class="quotes"><div class="quote">&ldquo;If that delivery is late, it is on me.&rdquo;</div><div class="quote">&ldquo;Show me your insurance and compliance before we even talk lanes.&rdquo;</div><div class="quote">&ldquo;I need someone I can actually reach at 2am, not a call center.&rdquo;</div><div class="quote">&ldquo;The last courier missed a STAT run and we almost lost the account.&rdquo;</div></div>
+<p class="quotes-note">These are the exact lines the follow up should mirror. People buy from whoever describes their problem better than they can.</p>
+</section>
+<section>
+<div class="eyebrow">What your operation signals</div>
+<h2>Your credibility, and the trust it is leaving on the table.</h2>
+<div class="read"><div class="row"><div class="k">Your strongest signal</div><p class="v"><b>Credentials that match the job.</b> TWIC, TSA air cargo, DOT compliance, HIPAA aware medical handling. To a medical or government buyer, that is the shortlist filter. You pass it. Most do not.</p></div><div class="row"><div class="k">What buyers notice next</div><p class="v"><b>Owner led accountability and fast response.</b> In this world, the operator answering the phone is a feature, not a weakness. It is exactly what a manager who has been burned wants.</p></div><div class="row"><div class="k">Where the signal dies</div><p class="v"><b>Nowhere they can see it.</b> None of the above is verifiable online, because the site is a placeholder. So the buyer cannot confirm what makes you the safe choice, and defaults to who they can. That is the gap this blueprint closes.</p></div></div>
+</section>
+<section>
+<div class="eyebrow">The path a new buyer takes right now</div>
+<h2>I traced it step by step. Here is where it breaks.</h2>
+<div class="path"><div class="pstep"><div class="num">1</div><p class="v">A logistics manager needs a backup or a new courier for time critical medical freight. The current one just failed, or a contract is up for bid.</p></div><div class="pstep"><div class="num">2</div><p class="v">They ask around and get ANW's name, or they search for a compliant courier in the area. They are interested now, this is the warmest they will be.</p></div><div class="pstep"><div class="num">3</div><p class="v">They look you up to verify you before they call.</p></div><div class="pstep brk"><div class="num">4</div><p class="v">They land on anwaisystems.com and see a <b>&ldquo;launching soon&rdquo; placeholder</b>. Nothing to confirm your credentials, your insurance, your coverage. <b>So they cannot justify the risk, and they move on.</b></p></div><div class="pstep"><div class="num">5</div><p class="v">You never knew they were looking. Next month you chase referrals again, while buyers who needed exactly you quietly went with someone they could vet.</p></div></div>
+<div class="breakline">
+<div class="tag">The break</div>
+<p>It is between step three and step four. The buyer is ready to trust you and goes to check, and there is nothing there. A real site that leads with your credentials and a quote form, and step four stops costing you contracts.</p>
+</div>
+</section>
+<section>
+<div class="eyebrow">What I did not assume</div>
+<h2>Straight with you on the limits.</h2>
+<div class="honest">
+<p><b>I did not guess your contract volume.</b> I can see your credentials and your services from the outside. I cannot see your numbers, and I would rather you tell me than make them up.</p>
+<p><b>I did not count a pipeline,</b> because there is no site or form yet to capture one. That is not a knock. It is the entire point of the blueprint.</p>
+</div>
+</section>
+<div class="tocta">
+<div class="eyebrow">Now the fix</div>
+<h2>You have seen what I saw. Here is what I would do about it.</h2>
+<p>The blueprint lays out the three moves, in order, to turn that credibility into contracts you actually win.</p>
+<a class="btn" href="index.html">Go to your blueprint →</a>
+</div>
+<footer>
+<div class="who">Miles · <span class="mark">Miles Builds <b>Systems</b></span></div>
+<p class="muted">I build the systems that turn a real operation's credibility and demand into booked work. Credibility to capture to follow up to signed contract, one owner, built around the business you already run. This research and the blueprint was made for you. No charge, no catch.</p>
+</footer>
+</div>
+</body>
+</html>
