@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth Blueprint · Miles Builds Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0B0B0B; --surface:#141414; --raised:#1C1C1C; --border:#272727;
+--text:#F2F2F2; --muted:#8A8A8A; --faint:#5C5C5C;
+--accent:#E8A020; --accent-light:#F5C860; --accent-dim:rgba(232,160,32,0.10);
+--danger:#E05252; --danger-dim:rgba(224,82,82,0.09);
+--success:#4CAF7D;
+--display:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+--body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+--mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);
+line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:72px 28px 96px;}
+.mono{font-family:var(--mono);}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;line-height:1.12;letter-spacing:-0.01em;}
+h1{font-size:clamp(34px,6vw,52px);margin:22px 0 20px;font-weight:700;}
+h1 .amber{color:var(--accent);}
+.lede{font-size:19px;color:var(--text);max-width:60ch;}
+.by{margin-top:34px;padding-top:22px;border-top:1px solid var(--border);
+display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted);}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;
+color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:3px 8px;}
+.mark{font-family:var(--display);font-weight:700;color:var(--text);}
+.mark b{color:var(--accent);}
+section{margin-top:72px;}
+h2{font-size:26px;margin:20px 0 18px;}
+p{margin:0 0 18px;max-width:64ch;}
+.muted{color:var(--muted);}
+strong{color:#fff;font-weight:600;}
+.amber-txt{color:var(--accent-light);font-weight:500;}
+/* metric row */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:26px 0 6px;}
+.metric{background:var(--surface);padding:20px 22px;}
+.metric .n{font-family:var(--display);font-size:28px;font-weight:600;
+font-variant-numeric:tabular-nums;color:var(--text);}
+.metric .n .u{font-size:15px;color:var(--muted);font-weight:500;}
+.metric .l{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+/* callout: the leak */
+.leak{background:var(--danger-dim);border:1px solid rgba(224,82,82,0.28);
+border-radius:10px;padding:26px 28px;margin:26px 0;}
+.leak .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+color:var(--danger);margin-bottom:12px;}
+.leak p:last-child{margin-bottom:0;}
+/* blueprint steps */
+.steps{display:flex;flex-direction:column;gap:2px;margin:26px 0;
+border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.step{background:var(--surface);padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;}
+.step + .step{border-top:1px solid var(--border);}
+.step .num{font-family:var(--mono);font-size:13px;color:var(--accent);
+border:1px solid var(--accent);border-radius:50%;width:34px;height:34px;
+display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;margin-top:2px;}
+.step h3{font-size:18px;margin:0 0 8px;color:#fff;}
+.step p{font-size:15px;color:var(--muted);margin:0;max-width:56ch;}
+.step p b{color:var(--text);}
+/* CTA */
+.cta{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:14px;padding:38px 34px;margin-top:30px;}
+.cta h2{margin-top:6px;}
+.offer{background:var(--accent-dim);border:1px solid rgba(232,160,32,0.32);
+border-radius:10px;padding:22px 24px;margin:22px 0;}
+.offer .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.offer p{margin:0;color:var(--text);}
+.qz{margin:24px 0 4px;}
+.qz .q{font-family:var(--display);font-weight:500;font-size:16px;color:#fff;margin-bottom:14px;}
+ul.opts{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:9px;}
+ul.opts li{padding-left:24px;position:relative;color:var(--muted);font-size:15px;}
+ul.opts li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;
+background:var(--accent);border-radius:50%;}
+.bands{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px;}
+.band{font-family:var(--mono);font-size:13px;color:var(--text);background:var(--surface);
+border:1px solid var(--border);border-radius:6px;padding:8px 14px;font-variant-numeric:tabular-nums;}
+.reply{margin-top:20px;font-size:15px;color:var(--muted);}
+.reply b{color:var(--accent-light);}
+.btn{display:inline-block;background:var(--accent);color:#0B0B0B;font-family:var(--display);
+font-weight:600;font-size:16px;text-decoration:none;padding:15px 30px;border-radius:8px;margin-top:8px;
+letter-spacing:-0.01em;transition:transform .15s ease,background .15s ease;}
+.btn:hover{background:var(--accent-light);transform:translateY(-1px);}
+.btn:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--accent);
+font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;padding:12px 20px;
+border:1px solid var(--accent);border-radius:8px;white-space:nowrap;
+transition:background .15s ease,transform .15s ease;}
+.btn-ghost:hover{background:var(--accent-dim);transform:translateY(-1px);}
+.btn-ghost:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+.research-cta{margin-top:26px;padding:20px 22px;border:1px dashed var(--border);border-radius:10px;
+background:var(--surface);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+.research-cta .rc-txt{font-size:14.5px;color:var(--muted);max-width:44ch;}
+.research-cta .rc-txt b{color:var(--text);font-family:var(--display);font-weight:600;}
+footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--border);
+font-size:14px;color:var(--muted);}
+footer .who{color:var(--text);font-family:var(--display);font-weight:500;font-size:16px;margin-bottom:8px;}
+.sample{position:fixed;top:14px;right:14px;font-family:var(--mono);font-size:10px;
+letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border:1px solid var(--border);
+border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:blur(4px);}
+@media (max-width:560px){.wrap{padding:52px 20px 72px;} .step{grid-template-columns:1fr;gap:12px;}}
+@media (prefers-reduced-motion:no-preference){
+.wrap>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;}
+.wrap>*:nth-child(2){animation-delay:.05s;} .wrap>section:nth-of-type(1){animation-delay:.1s;}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<div class="sample">Sample · template demo</div>
+<div class="wrap">
+<div class="eyebrow">Prepared for Maya Rivera · Growth Blueprint</div>
+<h1>Your 3 ingredient breakfast reel did 1.2 million views. Not one of those people is yours to reach <span class="amber">again</span>.</h1>
+<p class="lede">That reel is the proof. 1.2 million people stopped scrolling for <em>you</em>, which is the hardest thing in this entire game and the part you have clearly cracked. But watch what happens in the next three seconds. They double tap, a few tap follow, and then they are gone, back into the feed. The only way to reach them again is to make another one and hope the algorithm puts it in front of the same people. You did the impossible part. Nobody ever built the part that keeps them. I went through your account the way one of your buyers would, and this is exactly where it is slipping, and how to catch it.</p>
+<div class="by">
+<span class="badge">No pitch</span>
+<span>A growth blueprint I built for you, from <span class="mark">Miles Builds <b>Systems</b></span></span>
+</div>
+<div class="research-cta">
+<div class="rc-txt"><b>I did the homework before I wrote a word.</b> I mapped who is actually on the other side of that reel, what they are really trying to buy, and the exact path a new fan takes after they find you.</div>
+<a class="btn-ghost" href="https://milesbuildssystems.github.io/growth-blueprint/research.html">See the research on your account →</a>
+</div>
+<section>
+<div class="eyebrow">What you've already built</div>
+<h2>The hard part is done.</h2>
+<p>Most creators never get here. You have real reach, a proven offer people actually buy, and a voice they trust. That is the foundation everything else bolts onto, and you already have it.</p>
+<div class="metrics">
+<div class="metric"><div class="n">180<span class="u">k</span></div><div class="l">Instagram</div></div>
+<div class="metric"><div class="n">60<span class="u">k</span></div><div class="l">YouTube</div></div>
+<div class="metric"><div class="n">$197</div><div class="l">Proven offer</div></div>
+<div class="metric"><div class="n">1</div><div class="l">Link in bio</div></div>
+</div>
+<p class="muted">All pulled from your public profiles and funnel. I did not guess your revenue, that is one of the things I would rather you tell me.</p>
+</section>
+<section>
+<div class="eyebrow">Where the money's slipping</div>
+<h2>Your content works. Nothing catches the people it moves.</h2>
+<p>Here is the math. Every 100k views should be adding to an audience you actually own, an email list, a place you can reach those people again on purpose. Right now that attention has one place to go, a link in your bio with a stack of options, so it scatters and none of it sticks.</p>
+<div class="leak">
+<div class="tag">The leak</div>
+<p>You pay full price in effort to earn the attention, then hand the people it attracts back to the algorithm for free. So every launch starts from zero instead of from a warm audience that has been building the whole time. That is not a content problem. You solved content. It is the capture and follow up that was never built.</p>
+</div>
+<p>That is why it is full one month and crickets the next. The reach is real. Nothing is catching it.</p>
+</section>
+<section>
+<div class="eyebrow">What this could be</div>
+<h2>Same content. A machine behind it.</h2>
+<p>Picture the exact reel you already make, except now it feeds a system. People raise their hand, get captured, get warmed up on autopilot, and buy when they are ready instead of only when you happen to launch. You keep making what you are good at. The backend turns that attention into revenue whether you are online that day or not.</p>
+</section>
+<section>
+<div class="eyebrow">How I'd build it</div>
+<h2>Three moves, in order.</h2>
+<div class="steps">
+<div class="step">
+<div class="num">1</div>
+<div>
+<h3>Get people inside your world</h3>
+<p>Swap the link tree for one simple page that captures the people your reels already move, in exchange for something they actually want. The whole goal of step one is to get as many of them inside your ecosystem as possible. <b>Now the attention stops evaporating.</b></p>
+</div>
+</div>
+<div class="step">
+<div class="num">2</div>
+<div>
+<h3>Build the follow up that runs without you</h3>
+<p>A simple sequence that warms new subscribers, tells your story, and points them at the $197 offer on a loop. <b>The sale stops depending on you being online.</b></p>
+</div>
+</div>
+<div class="step">
+<div class="num">3</div>
+<div>
+<h3>Connect it so nothing falls through</h3>
+<p>Content to capture to follow up to offer, tracked in one place, so you can see what is working instead of guessing. <b>One machine, not five duct-taped tools.</b></p>
+</div>
+</div>
+</div>
+<p class="muted">None of this asks you to make more content or become a marketer. It builds the part that was missing around the part you already nailed.</p>
+</section>
+<div class="cta">
+<div class="eyebrow">If you want the full version</div>
+<h2>Want me to build this out for your exact setup?</h2>
+<p>This blueprint is the short version, built from the outside. If it is useful, I will record you a <strong>15 to 30 minute Loom</strong> walking through exactly how I would build it for you, step by step, yours to keep either way.</p>
+<div class="offer">
+<div class="tag">One step to get it</div>
+<p>Fill out the 2 minute form so the walkthrough is about how <em>you</em> actually get traffic and where you are stuck, not generic advice. It also tells us both, straight up, whether this is even a fit.</p>
+</div>
+<div class="qz">
+<div class="q">The 2 minutes covers:</div>
+<ul class="opts">
+<li>How you are getting people right now (reels, YouTube, ads, referrals)</li>
+<li>What you are selling, and roughly what you are doing a month</li>
+<li>The one bottleneck that is actually costing you</li>
+</ul>
+</div>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSft-UX6VBKRVwg-ePzOet_PS4mLzqzfCiBm4JGMr761Cmlz_g/viewform" target="_blank" rel="noopener">Build my custom plan</a>
+<p class="reply">Two minutes, tops. Qualify, and I record your Loom. If it is not a fit, I will tell you straight and point you the right way. <b>Either way, this is yours to keep.</b></p>
+</div>
+<footer>
+<div class="who">Miles · Miles Builds Systems</div>
+<p class="muted">I build the backend that turns a creator's audience into a system that runs without them. Content to capture to follow up to sale, one owner, built around the offer you already have. This blueprint was made for you. No charge, no catch.</p>
+</footer>
+</div>
+</body>
+</html>
