@@ -22,7 +22,7 @@
 body{background:var(--bg);color:var(--text);font-family:var(--body);
 line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
 .wrap{max-width:760px;margin:0 auto;padding:72px 28px 96px;}
-.mono{font-family:var(--mono);}
+.monp{font-family:var(--mono);}
 .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;
 text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;}
 .eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
@@ -42,6 +42,7 @@ p{margin:0 0 18px;max-width:64ch;}
 .muted{color:var(--muted);}
 strong{color:#fff;font-weight:600;}
 .amber-txt{color:var(--accent-light);font-weight:500;}
+/* metric row */
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
 gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:26px 0 6px;}
 .metric{background:var(--surface);padding:20px 22px;}
@@ -49,11 +50,13 @@ gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8p
 font-variant-numeric:tabular-nums;color:var(--text);}
 .metric .n .u{font-size:15px;color:var(--muted);font-weight:500;}
 .metric .l{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+/* callout: the leak */
 .leak{background:var(--danger-dim);border:1px solid rgba(224,82,82,0.28);
 border-radius:10px;padding:26px 28px;margin:26px 0;}
 .leak .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
 color:var(--danger);margin-bottom:12px;}
 .leak p:last-child{margin-bottom:0;}
+/* blueprint steps */
 .steps{display:flex;flex-direction:column;gap:2px;margin:26px 0;
 border:1px solid var(--border);border-radius:10px;overflow:hidden;}
 .step{background:var(--surface);padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;}
@@ -64,6 +67,7 @@ display:flex;align-items:center;justify-content:center;font-variant-numeric:tabu
 .step h3{font-size:18px;margin:0 0 8px;color:#fff;}
 .step p{font-size:15px;color:var(--muted);margin:0;max-width:56ch;}
 .step p b{color:var(--text);}
+/* CTA */
 .cta{background:linear-gradient(180deg,var(--raised),var(--surface));
 border:1px solid var(--border);border-radius:14px;padding:38px 34px;margin-top:30px;}
 .cta h2{margin-top:6px;}
@@ -109,7 +113,7 @@ border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:
 .wrap>*:nth-child(2){animation-delay:.05s;} .wrap>section:nth-of-type(1){animation-delay:.1s;}
 @keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
 }
-.tabs{display:flex;gap:2px;margin:0 0 10px;border-bottom:1px solid var(--border);}.tab{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap;}.tab:hover{color:var(--text);}.tab.active{color:var(--accent);border-bottom-color:var(--accent);}@media(max-width:560px){.tab{padding:10px 11px;font-size:11px;letter-spacing:0.04em;}}.reel{display:flex;gap:16px;align-items:center;margin:24px 0 6px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .15s,transform .15s;max-width:430px;}.reel:hover{border-color:var(--accent);transform:translateY(-1px);}.reel-thumb{position:relative;width:74px;height:104px;border-radius:8px;flex:none;background:linear-gradient(150deg,#2c2c2c,#141414);border:1px solid var(--border);overflow:hidden;}.reel-thumb img{width:100%;height:100%;object-fit:cover;}.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;}.reel-ey{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}.reel-title{font-family:var(--display);font-weight:600;font-size:16px;color:var(--text);line-height:1.2;}.reel-views{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;}.reel-link{font-family:var(--display);font-weight:600;font-size:13px;color:var(--accent);margin-top:8px;}.btn-ghost{background:var(--raised);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:13px 22px;font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,0.35);transition:background .15s ease,color .15s ease,transform .15s ease;}.btn-ghost:hover{background:var(--accent);color:#0B0B0B;transform:translateY(-1px);}</style>
+.tabs{display:flex;gap:2px;margin:0 0 10px;border-bottom:1px solid var(--border);}.tab{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap;}.tab:hover{color:var(--text);}.tab.active{color:var(--accent);border-bottom-color:var(--accent);}@media(max-width:560px){.tab{padding:10px 11px;font-size:11px;letter-spacing:0.04em;}}.reel{display:flex;gap:16px;align-items:center;margin:24px 0 6px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .15s,transform .15s;max-width:430px;}.reel:hover{border-color:var(--accent);transform:translateY(-1px);}.reel-static{cursor:default;}.reel-static:hover{border-color:var(--border);transform:none;}.reel-thumb{position:relative;width:74px;height:104px;border-radius:8px;flex:none;background:linear-gradient(150deg,#2c2c2c,#141414);border:1px solid var(--border);overflow:hidden;}.reel-thumb img{width:100%;height:100%;object-fit:cover;}.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;}.reel-ey{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}.reel-title{font-family:var(--display);font-weight:600;font-size:16px;color:var(--text);line-height:1.2;}.reel-views{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;}.reel-link{font-family:var(--display);font-weight:600;font-size:13px;color:var(--accent);margin-top:8px;}.btn-ghost{background:var(--raised);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:13px 22px;font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,0.35);transition:background .15s ease,color .15s ease,transform .15s ease;}.btn-ghost:hover{background:var(--accent);color:#0B0B0B;transform:translateY(-1px);}</style>
 </head>
 <body>
 <div class="sample">Sample · template demo</div>
@@ -118,7 +122,7 @@ border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:
 <div class="eyebrow">Prepared for Maya Rivera · Growth Blueprint</div>
 <h1>Your 3 ingredient breakfast reel did 1.2 million views. Not one of those people is yours to reach <span class="amber">again</span>.</h1>
 <p class="lede">That reel is the proof. 1.2 million people stopped scrolling for <em>you</em>, which is the hardest thing in this entire game and the part you have clearly cracked. But watch what happens in the next three seconds. They double tap, a few tap follow, and then they are gone, back into the feed. The only way to reach them again is to make another one and hope the algorithm puts it in front of the same people. You did the impossible part. Nobody ever built the part that keeps them. I went through your account the way one of your buyers would, and this is exactly where it is slipping, and how to catch it.</p>
-<a class="reel" href="https://www.instagram.com/" target="_blank" rel="noopener"><div class="reel-thumb"><span class="reel-play">&#9654;</span></div><div class="reel-meta"><div class="reel-ey">The one I'm talking about</div><div class="reel-title">3-ingredient breakfast</div><div class="reel-views">1.2M views</div><div class="reel-link">Watch it &rarr;</div></div></a>
+<div class="reel reel-static"><div class="reel-thumb"><span class="reel-play">&#9654;</span></div><div class="reel-meta"><div class="reel-ey">The one I'm talking about</div><div class="reel-title">3-ingredient breakfast</div><div class="reel-views">1.2M views</div></div></div>
 <div class="by">
 <span class="badge">No pitch</span>
 <span>A growth blueprint I built for you, from <span class="mark">Miles Builds <b>Systems</b></span></span>
