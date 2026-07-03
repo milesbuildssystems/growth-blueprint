@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Research · Miles Builds Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0B0B0B; --surface:#141414; --raised:#1C1C1C; --border:#272727;
+--text:#F2F2F2; --muted:#8A8A8A; --faint:#5C5C5C;
+--accent:#E8A020; --accent-light:#F5C860; --accent-dim:rgba(232,160,32,0.10);
+--danger:#E05252; --danger-dim:rgba(224,82,82,0.09);
+--success:#4CAF7D;
+--display:'Space Grotesk','Segoe UI',system-ui,sans-serif;
+--body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+--mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);
+line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:72px 28px 96px;}
+a.back{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--muted);
+text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;
+border:1px solid var(--border);border-radius:6px;padding:8px 14px;transition:color .15s,border-color .15s;}
+a.back:hover{color:var(--accent);border-color:var(--accent);}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;line-height:1.14;letter-spacing:-0.01em;}
+h1{font-size:clamp(30px,5vw,44px);margin:20px 0 18px;font-weight:700;}
+h1 .amber{color:var(--accent);}
+.lede{font-size:18px;color:var(--text);max-width:62ch;}
+.lede em{color:var(--accent-light);font-style:normal;}
+section{margin-top:64px;}
+h2{font-size:25px;margin:18px 0 16px;}
+p{margin:0 0 18px;max-width:64ch;}
+.muted{color:var(--muted);}
+strong{color:#fff;font-weight:600;}
+em.hl{color:var(--accent-light);font-style:normal;font-weight:500;}
+/* avatar card */
+.avatar{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:12px;padding:28px 30px;margin:24px 0;}
+.avatar .who{font-family:var(--display);font-weight:600;font-size:20px;color:#fff;margin-bottom:4px;}
+.avatar .sub{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+color:var(--accent);margin-bottom:16px;}
+.avatar ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;}
+.avatar li{padding-left:24px;position:relative;color:var(--text);font-size:15.5px;}
+.avatar li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;
+background:var(--accent);border-radius:50%;}
+.avatar li b{color:#fff;font-weight:600;}
+.avatar .buy{margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
+font-size:16px;color:var(--text);}
+.avatar .buy b{color:var(--accent-light);font-family:var(--display);font-weight:600;}
+/* quotes */
+.quotes{display:flex;flex-direction:column;gap:12px;margin:22px 0;}
+.quote{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);
+border-radius:8px;padding:16px 20px;font-size:16px;color:var(--text);font-style:italic;}
+.quotes-note{font-size:14px;color:var(--muted);}
+/* content read */
+.read{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+padding:6px 26px;margin:22px 0;}
+.read .row{padding:18px 0;border-bottom:1px solid var(--border);}
+.read .row:last-child{border-bottom:none;}
+.read .k{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+color:var(--accent);margin-bottom:7px;}
+.read .v{font-size:15.5px;color:var(--text);margin:0;}
+.read .v b{color:#fff;font-weight:600;}
+/* path */
+.path{display:flex;flex-direction:column;gap:2px;margin:22px 0;
+border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.pstep{background:var(--surface);padding:18px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;}
+.pstep + .pstep{border-top:1px solid var(--border);}
+.pstep .num{font-family:var(--mono);font-size:12px;color:var(--muted);
+border:1px solid var(--border);border-radius:50%;width:30px;height:30px;
+display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;margin-top:1px;}
+.pstep .v{font-size:15.5px;color:var(--text);margin:0;}
+.pstep.brk{background:var(--danger-dim);}
+.pstep.brk .num{color:var(--danger);border-color:rgba(224,82,82,0.5);}
+.pstep.brk .v b{color:var(--danger);}
+.pstep .v b{color:#fff;font-weight:600;}
+.breakline{background:var(--danger-dim);border:1px solid rgba(224,82,82,0.28);border-radius:10px;
+padding:22px 26px;margin:22px 0;}
+.breakline .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+color:var(--danger);margin-bottom:10px;}
+.breakline p{margin:0;}
+/* honesty */
+.honest{background:var(--surface);border:1px dashed var(--border);border-radius:10px;padding:22px 26px;margin:22px 0;}
+.honest p{margin:0 0 12px;font-size:15px;color:var(--muted);}
+.honest p:last-child{margin-bottom:0;}
+.honest b{color:var(--text);}
+/* bottom cta back to blueprint */
+.tocta{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:14px;padding:32px 30px;margin-top:56px;text-align:left;}
+.btn{display:inline-block;background:var(--accent);color:#0B0B0B;font-family:var(--display);
+font-weight:600;font-size:16px;text-decoration:none;padding:15px 30px;border-radius:8px;margin-top:14px;
+letter-spacing:-0.01em;transition:transform .15s ease,background .15s ease;}
+.btn:hover{background:var(--accent-light);transform:translateY(-1px);}
+.btn:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--border);font-size:14px;color:var(--muted);}
+footer .who{color:var(--text);font-family:var(--display);font-weight:500;font-size:16px;margin-bottom:8px;}
+.mark{font-family:var(--display);font-weight:700;color:var(--text);}
+.mark b{color:var(--accent);}
+.sample{position:fixed;top:14px;right:14px;font-family:var(--mono);font-size:10px;
+letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border:1px solid var(--border);
+border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:blur(4px);}
+@media (max-width:560px){.wrap{padding:52px 20px 72px;} .pstep{grid-template-columns:auto 1fr;gap:14px;}}
+@media (prefers-reduced-motion:no-preference){
+.wrap>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;}
+.wrap>*:nth-child(3){animation-delay:.05s;} .wrap>section:nth-of-type(1){animation-delay:.1s;}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+}
+</style>
+</head>
+<body>
+<div class="sample">Sample · template demo</div>
+<div class="wrap">
+<a class="back" href="index.html">← Back to your blueprint</a>
+<div class="eyebrow">The research · prepared for Marcus Bell</div>
+<h1>Your audience, decoded. Take any of it and use it <span class="amber">today</span>.</h1>
+<p class="lede">This is a map of the people on the other side of your videos: who they really are, the exact words they use, and where they slip away before they ever buy. Read it like a cheat sheet. Everything on this page you can put to work in your next video, your next caption, your next offer, <em>whether we ever work together or not</em>. I did the digging so you don't have to.</p>
+<section>
+<div class="eyebrow">Who's really following you</div>
+<h2>Who is actually on the other side of that reel.</h2>
+<p>This is who saves your payoff videos and sends them to their partner. Not a demographic guess, the person your content already speaks to.</p>
+<div class="avatar">
+<div class="who">The person one paycheck from underwater</div>
+<div class="sub">Your core buyer</div>
+<ul><li>Late 20s to 40s, working, often with a family, carrying credit card or student debt that keeps them up at night.</li><li>Follows you because you make getting out look <b>possible on a normal income</b>, not a finance bro flexing a Lambo.</li><li>Has already tried a budgeting app, maybe Dave Ramsey, maybe a spreadsheet. Started strong. Fell off in a month. Quietly feels like they failed at it.</li><li>Saves your videos constantly. Rarely acts on the save, because there is no next step waiting for them.</li></ul>
+<div class="buy"><b>What they are really buying:</b> not a budget. They are buying “I can finally see a way out.” The relief of a plan that survives a real month.</div>
+</div>
+</section>
+<section>
+<div class="eyebrow">In her own words</div>
+<h2>The language she uses (so your funnel can use it back).</h2>
+<p>Pulled from the pattern in your comments and the way this audience talks. When your capture page says these back to them, they feel understood before you have sold a thing.</p>
+<div class="quotes"><div class="quote">“I make decent money and still have nothing left at the end of the month.”</div><div class="quote">“I always start a budget and give up by week two.”</div><div class="quote">“Just tell me exactly what to do first.”</div><div class="quote">“This is the first thing that actually felt doable.”</div></div>
+<p class="quotes-note">These are the exact lines the follow up should mirror. People buy from whoever describes their problem better than they can.</p>
+</section>
+<section>
+<div class="eyebrow">What your content is doing</div>
+<h2>Your engine, and the intent it is leaving on the table.</h2>
+<div class="read"><div class="row"><div class="k">Your top format</div><p class="v"><b>Short, raw, on-camera payoff stories with the real number on screen.</b> That is your engine. It travels because it is proof and hope at the same time.</p></div><div class="row"><div class="k">What gets saved and sent</div><p class="v">Your “how I did it” videos get <b>saved and sent to a partner.</b> A save is a promise to come back. A share is a referral. Both are buying intent.</p></div><div class="row"><div class="k">Where that intent goes</div><p class="v"><b>Nowhere you own.</b> The save sits in their folder, the partner watches and leaves, and none of it lands anywhere you can follow up. That is the gap this blueprint closes.</p></div></div>
+</section>
+<section>
+<div class="eyebrow">The path a new fan takes right now</div>
+<h2>I traced it step by step. Here is where it breaks.</h2>
+<div class="path"><div class="pstep"><div class="num">1</div><p class="v">Sees the payoff video on their For You page. Stops. Watches it twice.</p></div><div class="pstep"><div class="num">2</div><p class="v">Taps your profile. Reads the bio. They are interested now, this is the warmest they will ever be.</p></div><div class="pstep"><div class="num">3</div><p class="v">Taps the one link in your bio.</p></div><div class="pstep brk"><div class="num">4</div><p class="v">Lands on a link page with <b>five options</b> stacked on it. The course, a free PDF, YouTube, a podcast, Amazon. They have to choose. <b>So they choose none, and close the tab.</b></p></div><div class="pstep"><div class="num">5</div><p class="v">You never got their email. Next week you post another video to go find them, and someone just like them, all over again.</p></div></div>
+<div class="breakline">
+<div class="tag">The break</div>
+<p>It is between step three and step four. Every extra choice on that link page costs you people. One page, one ask, one thing they want, and step four stops leaking.</p>
+</div>
+</section>
+<section>
+<div class="eyebrow">What I did not assume</div>
+<h2>Straight with you on the limits.</h2>
+<div class="honest">
+<p><b>I did not guess your revenue.</b> I can see your reach and your offer from the outside. I cannot see your numbers, and I would rather you tell me than make them up.</p>
+<p><b>I did not count a list,</b> because I could not find anywhere to join one. That is not a knock. It is the entire point of the blueprint.</p>
+</div>
+</section>
+<div class="tocta">
+<div class="eyebrow">Now the fix</div>
+<h2>You have seen what I saw. Here is what I would do about it.</h2>
+<p>The blueprint lays out the three moves, in order, to turn all of that attention into an audience you actually own.</p>
+<a class="btn" href="index.html">Go to your blueprint →</a>
+</div>
+<footer>
+<div class="who">Miles · <span class="mark">Miles Builds <b>Systems</b></span></div>
+<p class="muted">I build the backend that turns a creator's audience into a system that runs without them. Content to capture to follow up to sale, one owner, built around the offer you already have. This research and the blueprint were made for you. No charge, no catch.</p>
+</footer>
+</div>
+</body>
+</html>
