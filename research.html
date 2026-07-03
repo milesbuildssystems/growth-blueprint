@@ -40,7 +40,6 @@ p{margin:0 0 18px;max-width:64ch;}
 .muted{color:var(--muted);}
 strong{color:#fff;font-weight:600;}
 em.hl{color:var(--accent-light);font-style:normal;font-weight:500;}
-/* avatar card */
 .avatar{background:linear-gradient(180deg,var(--raised),var(--surface));
 border:1px solid var(--border);border-radius:12px;padding:28px 30px;margin:24px 0;}
 .avatar .who{font-family:var(--display);font-weight:600;font-size:20px;color:#fff;margin-bottom:4px;}
@@ -54,12 +53,10 @@ background:var(--accent);border-radius:50%;}
 .avatar .buy{margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
 font-size:16px;color:var(--text);}
 .avatar .buy b{color:var(--accent-light);font-family:var(--display);font-weight:600;}
-/* quotes */
 .quotes{display:flex;flex-direction:column;gap:12px;margin:22px 0;}
 .quote{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);
 border-radius:8px;padding:16px 20px;font-size:16px;color:var(--text);font-style:italic;}
 .quotes-note{font-size:14px;color:var(--muted);}
-/* content read */
 .read{background:var(--surface);border:1px solid var(--border);border-radius:10px;
 padding:6px 26px;margin:22px 0;}
 .read .row{padding:18px 0;border-bottom:1px solid var(--border);}
@@ -68,7 +65,6 @@ padding:6px 26px;margin:22px 0;}
 color:var(--accent);margin-bottom:7px;}
 .read .v{font-size:15.5px;color:var(--text);margin:0;}
 .read .v b{color:#fff;font-weight:600;}
-/* path */
 .path{display:flex;flex-direction:column;gap:2px;margin:22px 0;
 border:1px solid var(--border);border-radius:10px;overflow:hidden;}
 .pstep{background:var(--surface);padding:18px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;}
@@ -86,12 +82,10 @@ padding:22px 26px;margin:22px 0;}
 .breakline .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
 color:var(--danger);margin-bottom:10px;}
 .breakline p{margin:0;}
-/* honesty */
 .honest{background:var(--surface);border:1px dashed var(--border);border-radius:10px;padding:22px 26px;margin:22px 0;}
 .honest p{margin:0 0 12px;font-size:15px;color:var(--muted);}
 .honest p:last-child{margin-bottom:0;}
 .honest b{color:var(--text);}
-/* bottom cta back to blueprint */
 .tocta{background:linear-gradient(180deg,var(--raised),var(--surface));
 border:1px solid var(--border);border-radius:14px;padding:32px 30px;margin-top:56px;text-align:left;}
 .btn{display:inline-block;background:var(--accent);color:#0B0B0B;font-family:var(--display);
@@ -130,12 +124,12 @@ border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:
 .stagecard .lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
 .stagecard p{margin:0;font-size:15.5px;color:var(--text);}
 @media(max-width:560px){.rung{grid-template-columns:1fr;gap:4px;}}
-</style>
+.tabs{display:flex;gap:2px;margin:0 0 10px;border-bottom:1px solid var(--border);}.tab{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap;}.tab:hover{color:var(--text);}.tab.active{color:var(--accent);border-bottom-color:var(--accent);}@media(max-width:560px){.tab{padding:10px 11px;font-size:11px;letter-spacing:0.04em;}}.reel{display:flex;gap:16px;align-items:center;margin:24px 0 6px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .15s,transform .15s;max-width:430px;}.reel:hover{border-color:var(--accent);transform:translateY(-1px);}.reel-thumb{position:relative;width:74px;height:104px;border-radius:8px;flex:none;background:linear-gradient(150deg,#2c2c2c,#141414);border:1px solid var(--border);overflow:hidden;}.reel-thumb img{width:100%;height:100%;object-fit:cover;}.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;}.reel-ey{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}.reel-title{font-family:var(--display);font-weight:600;font-size:16px;color:var(--text);line-height:1.2;}.reel-views{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;}.reel-link{font-family:var(--display);font-weight:600;font-size:13px;color:var(--accent);margin-top:8px;}.btn-ghost{background:var(--raised);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:13px 22px;font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,0.35);transition:background .15s ease,color .15s ease,transform .15s ease;}.btn-ghost:hover{background:var(--accent);color:#0B0B0B;transform:translateY(-1px);}</style>
 </head>
 <body>
 <div class="sample">Sample · template demo</div>
 <div class="wrap">
-<a class="back" href="index.html">← Back to your blueprint</a>
+<nav class="tabs"><a class="tab" href="index.html">Blueprint</a><a class="tab active" href="research.html">Research</a><a class="tab" href="awareness.html">Awareness</a></nav>
 <div class="eyebrow">The research · prepared for Maya Rivera</div>
 <h1>Your audience, decoded. Take any of it and use it <span class="amber">today</span>.</h1>
 <p class="lede">This is a map of the people on the other side of your content: who they really are, the exact words they use, and where they slip away before they ever buy. Read it like a cheat sheet. Everything on this page you can put to work in your next post, your next caption, your next offer, <em>whether we ever work together or not</em>. I did the digging so you don't have to.</p>
@@ -144,7 +138,7 @@ border-radius:4px;padding:4px 9px;background:rgba(11,11,11,0.8);backdrop-filter:
 <h2>The awareness ladder.</h2>
 <p>Most of the people who find you are not cold, and not ready to buy. They are stuck in the middle: they feel the problem but have not been shown a way out that fits their life. Here is the whole ladder.</p>
 <div class="ladder"><div class="rung"><div class="stage">Unaware</div><p class="line">Does not think she has a problem. She saves a reel, cooks it once, and moves on.</p></div><div class="rung here"><div class="stage">Problem-aware<span class="tag">most of your audience</span></div><p class="line">Feels it. She starts strong every month and falls off, and she is tired of starting over.</p></div><div class="rung"><div class="stage">Solution-aware</div><p class="line">Knows structured meal-prep plans exist. She has tried an app or a challenge before.</p></div><div class="rung"><div class="stage">Product-aware</div><p class="line">Knows about you specifically. She follows, trusts your style, has not bought yet.</p></div><div class="rung"><div class="stage">Most-aware</div><p class="line">Ready to buy the moment a clear, simple offer is in front of her.</p></div></div>
-<a class="btn-ghost" href="awareness.html">See what each stage means for you &rarr;</a>
+<a class="btn-ghost" href="awareness.html">See what each stage means for you →</a>
 </section>
 <section>
 <div class="eyebrow">Who's really following you</div>
