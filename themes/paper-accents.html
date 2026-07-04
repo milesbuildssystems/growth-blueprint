@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanilla paper, accent options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#0c0c0c;font-family:'DM Sans',system-ui,sans-serif;}
+  .top{position:sticky;top:0;z-index:5;background:rgba(12,12,12,.93);backdrop-filter:blur(8px);border-bottom:1px solid #222;padding:13px 22px;display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+  .top .t{color:#fff;font-weight:700;font-size:13.5px;margin-right:6px;}
+  .top a{text-decoration:none;font-size:12px;font-weight:600;border:1px solid #333;border-radius:20px;padding:6px 13px;color:#ccc;}
+
+  /* vanilla paper base (fixed); only the accent vars change per band */
+  .band{padding:52px 24px 30px;background:#F4EDDF;}
+  .doc{max-width:660px;margin:0 auto;}
+  .eyebrow{font-weight:600;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#837655;display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .eyebrow b{color:var(--accent);font-weight:700;}
+  .eyebrow::after{content:"";height:1px;flex:1;background:#E5D9C0;}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(30px,4.4vw,42px);line-height:1.08;letter-spacing:-.005em;color:#221C12;margin-bottom:18px;}
+  .hl{color:#221C12;background-image:var(--squiggle);background-repeat:no-repeat;background-position:0 100%;background-size:100% .46em;padding-bottom:.08em;}
+  .lede{font-size:17.5px;line-height:1.6;color:#4C4534;max-width:56ch;margin-bottom:24px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+  .chip{font-size:12.5px;font-weight:600;color:#5A5140;background:#FBF6EA;border:1px solid #E5D9C0;border-radius:999px;padding:6px 14px;}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:22px;}
+  .tr{display:flex;align-items:center;gap:8px;font-size:13px;color:#837655;font-weight:500;}
+  .tr .ck{width:18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:15px;text-decoration:none;padding:13px 28px;border-radius:999px;}
+  .cap{max-width:660px;margin:26px auto 0;padding-top:16px;border-top:1px solid #E5D9C0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .cap .sw{width:26px;height:26px;border-radius:7px;background:var(--accent);border:1px solid rgba(0,0,0,.12);}
+  .cap .nm{font-family:'Fraunces',serif;font-weight:600;color:#221C12;font-size:15.5px;}
+  .cap .hex{font-family:'DM Sans',monospace;font-size:12.5px;color:#837655;}
+
+  .terra {--accent:#C4622C;--squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%23C4622C' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .forest{--accent:#3E6B45;--squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%233E6B45' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .navy  {--accent:#23486E;--squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%2323486E' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .oxblood{--accent:#8A2E3B;--squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%238A2E3B' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
+</style>
+</head>
+<body>
+<nav class="top">
+  <span class="t">Vanilla paper &middot; accent options</span>
+  <a href="#terra" style="border-color:#C4622C;color:#E08A50;">Terracotta</a>
+  <a href="#forest" style="border-color:#3E6B45;color:#6FA377;">Forest green</a>
+  <a href="#navy" style="border-color:#23486E;color:#6E9BD1;">Ink navy</a>
+  <a href="#oxblood" style="border-color:#8A2E3B;color:#C56C79;">Oxblood</a>
+</nav>
+
+<section class="band terra" id="terra">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">The trust you earned in the field never reaches the person signing the contract. Here is where it slips, and how to catch it.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Gov contracts</span></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap"><span class="sw"></span><span class="nm">Terracotta</span><span class="hex">#C4622C &middot; warm, earthy, echoes the THRST orange</span></div>
+</section>
+
+<section class="band forest" id="forest">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">The trust you earned in the field never reaches the person signing the contract. Here is where it slips, and how to catch it.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Gov contracts</span></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap"><span class="sw"></span><span class="nm">Forest green</span><span class="hex">#3E6B45 &middot; green, but grown-up (keeps your color, drops the neon)</span></div>
+</section>
+
+<section class="band navy" id="navy">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">The trust you earned in the field never reaches the person signing the contract. Here is where it slips, and how to catch it.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Gov contracts</span></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap"><span class="sw"></span><span class="nm">Ink navy</span><span class="hex">#23486E &middot; classic, high-trust, reads corporate-premium</span></div>
+</section>
+
+<section class="band oxblood" id="oxblood">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">The trust you earned in the field never reaches the person signing the contract. Here is where it slips, and how to catch it.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Gov contracts</span></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap"><span class="sw"></span><span class="nm">Oxblood</span><span class="hex">#8A2E3B &middot; rich, established, a little luxury</span></div>
+</section>
+</body>
+</html>
