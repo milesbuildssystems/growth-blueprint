@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blueprint theme directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#0c0c0c;font-family:'Manrope',system-ui,sans-serif;}
+
+  /* top nav */
+  .top{position:sticky;top:0;z-index:5;background:rgba(12,12,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid #222;padding:14px 24px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .top .t{color:#fff;font-weight:800;font-size:14px;margin-right:8px;}
+  .top a{color:#bbb;text-decoration:none;font-size:12.5px;font-weight:600;border:1px solid #333;border-radius:20px;padding:6px 13px;transition:.15s;}
+  .top a:hover{color:#fff;border-color:#666;}
+
+  /* shared component system, driven by per-theme vars */
+  .band{padding:60px 24px 30px;background:var(--bg);}
+  .doc{max-width:700px;margin:0 auto;}
+  .eyebrow{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+  h1{font-family:var(--display);font-weight:var(--dw,700);font-size:clamp(30px,4.6vw,44px);line-height:1.08;letter-spacing:-.01em;color:var(--ink);margin-bottom:20px;}
+  .lede{font-family:var(--body);font-size:18px;line-height:1.6;color:var(--lede);max-width:58ch;margin-bottom:28px;}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:26px;}
+  .metric{background:var(--surface);padding:16px 18px;}
+  .metric .n{font-family:var(--display);font-weight:var(--dw,700);font-size:22px;color:var(--ink);}
+  .metric .l{font-family:var(--body);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+  .leak{background:var(--leakbg);border:1px solid var(--leakbd);border-radius:12px;padding:20px 22px;margin-bottom:26px;}
+  .leak .tag{font-family:var(--body);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaktag);display:block;margin-bottom:9px;}
+  .leak p{font-family:var(--body);color:var(--ink);line-height:1.58;font-size:15.5px;}
+  .step{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:28px;}
+  .step .num{font-family:var(--display);font-weight:700;width:34px;height:34px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .step h3{font-family:var(--display);font-weight:var(--h3w,600);font-size:18px;color:var(--ink);margin-bottom:7px;}
+  .step p{font-family:var(--body);color:var(--muted);line-height:1.55;font-size:15px;}
+  .btn{display:inline-block;background:var(--btnbg);color:var(--btnink);font-family:var(--body);font-weight:700;font-size:15.5px;text-decoration:none;padding:14px 28px;border-radius:var(--btnr);}
+
+  /* caption / spec strip under each theme */
+  .cap{max-width:700px;margin:30px auto 0;padding-top:20px;border-top:1px solid var(--border);}
+  .cap .name{font-family:var(--display);font-weight:var(--dw,700);color:var(--ink);font-size:16px;margin-bottom:3px;}
+  .cap .name b{color:var(--accent);}
+  .cap .note{font-family:var(--body);color:var(--muted);font-size:13.5px;line-height:1.5;max-width:64ch;margin-bottom:12px;}
+  .sw{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+  .sw span{width:22px;height:22px;border-radius:5px;border:1px solid rgba(128,128,128,.35);}
+  .sw .lab{font-family:var(--body);font-size:11.5px;color:var(--muted);margin-left:4px;letter-spacing:.02em;}
+
+  /* ===== THEME A: Premium Editorial (Knowledge deck recipe) ===== */
+  .tA{--bg:#111720;--surface:#161E2A;--border:#26303f;--ink:#FFFFFF;--muted:#9FB0C9;--lede:#C7D2E2;
+      --accent:#CCA44F;--display:'Manrope',sans-serif;--body:'Manrope',sans-serif;--dw:800;--h3w:700;
+      --leakbg:#181f2b;--leakbd:#3a2f1c;--leaktag:#CCA44F;--btnbg:#CCA44F;--btnink:#1a1205;--btnr:10px;}
+  .tA .hl{color:#CCA44F;text-decoration:underline;text-decoration-color:rgba(204,164,79,.45);text-decoration-thickness:2px;text-underline-offset:5px;}
+
+  /* ===== THEME D: Premium Dark + Volt (Knowledge base, your brand color) ===== */
+  .tD{--bg:#111720;--surface:#161E2A;--border:#26303f;--ink:#FFFFFF;--muted:#9FB0C9;--lede:#C7D2E2;
+      --accent:#C6FF2E;--display:'Manrope',sans-serif;--body:'Manrope',sans-serif;--dw:800;--h3w:700;
+      --leakbg:#181f2b;--leakbd:#333d24;--leaktag:#C6FF2E;--btnbg:#C6FF2E;--btnink:#0c1206;--btnr:26px;}
+  .tD .hl{background:#C6FF2E;color:#0e1116;padding:0 .1em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+
+  /* ===== THEME B: Your brand, premium (Volt on warm-neutral dark, DM Sans) ===== */
+  .tB{--bg:#0D0D0C;--surface:#171715;--border:#2A2A26;--ink:#F6F5EF;--muted:#A6A498;--lede:#D6D4C8;
+      --accent:#C6FF2E;--display:'DM Sans',sans-serif;--body:'DM Sans',sans-serif;--dw:700;--h3w:700;
+      --leakbg:#151512;--leakbd:#333323;--leaktag:#C6FF2E;--btnbg:#C6FF2E;--btnink:#0A0A0A;--btnr:26px;}
+  .tB .hl{background:#C6FF2E;color:#0A0A0A;padding:0 .1em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+
+  /* ===== THEME C: Vanilla Paper (warm light, Fraunces serif, Volt pop) ===== */
+  .tC{--bg:#F3ECDC;--surface:#FAF4E7;--border:#E4D8C0;--ink:#221C12;--muted:#7B7059;--lede:#4A4335;
+      --accent:#9A6B23;--display:'Fraunces',Georgia,serif;--body:'DM Sans',sans-serif;--dw:600;--h3w:600;
+      --leakbg:#F8F1E1;--leakbd:#E4D8C0;--leaktag:#B4462F;--btnbg:#221C12;--btnink:#F3ECDC;--btnr:8px;}
+  .tC .hl{background:#C6FF2E;color:#221C12;padding:0 .1em;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+  .tC .eyebrow{letter-spacing:.16em;}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <span class="t">Blueprint theme directions</span>
+  <a href="#A">A · Premium Editorial</a>
+  <a href="#B">B · Your Volt brand</a>
+  <a href="#C">C · Vanilla Paper</a>
+  <a href="#D" style="border-color:#C6FF2E;color:#C6FF2E;">D · Premium Dark + Volt ★</a>
+</nav>
+
+<!-- reusable block is repeated per theme so the ONLY difference is the skin -->
+<section class="band tA" id="A">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; Growth Blueprint</div>
+    <h1>You hold TWIC, TSA air cargo clearance, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. When a buyer goes looking for a courier they can trust, the trust you earned never reaches them. Here is where it slips.</p>
+    <div class="metrics">
+      <div class="metric"><div class="n">TWIC</div><div class="l">Credential held</div></div>
+      <div class="metric"><div class="n">TSA</div><div class="l">Air cargo cleared</div></div>
+      <div class="metric"><div class="n">HIPAA</div><div class="l">Aware, medical</div></div>
+      <div class="metric"><div class="n">Gov</div><div class="l">Active contracts</div></div>
+    </div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="step"><span class="num">1</span><div><h3>Build the credibility front door</h3><p>A real ANW site that leads with the proof a buyer needs, plus a quote form. Now buyers can verify you and reach you.</p></div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap">
+    <div class="name">A &middot; <b>Premium Editorial</b> &nbsp;the exact recipe from your Knowledge deck</div>
+    <div class="note">Deep navy-charcoal, muted gold, soft blue-grey text, Manrope. Reads like a high-end course platform. Warm, premium, zero AI feel. Note: gold is Knowledge's client color, so we'd likely swap the accent to your volt green (that's option B's accent on this base).</div>
+    <div class="sw"><span style="background:#111720"></span><span style="background:#161E2A"></span><span style="background:#CCA44F"></span><span style="background:#9FB0C9"></span><span style="background:#fff"></span><span class="lab">Manrope</span></div>
+  </div>
+</section>
+
+<section class="band tB" id="B">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; Growth Blueprint</div>
+    <h1>You hold TWIC, TSA air cargo clearance, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. When a buyer goes looking for a courier they can trust, the trust you earned never reaches them. Here is where it slips.</p>
+    <div class="metrics">
+      <div class="metric"><div class="n">TWIC</div><div class="l">Credential held</div></div>
+      <div class="metric"><div class="n">TSA</div><div class="l">Air cargo cleared</div></div>
+      <div class="metric"><div class="n">HIPAA</div><div class="l">Aware, medical</div></div>
+      <div class="metric"><div class="n">Gov</div><div class="l">Active contracts</div></div>
+    </div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="step"><span class="num">1</span><div><h3>Build the credibility front door</h3><p>A real ANW site that leads with the proof a buyer needs, plus a quote form. Now buyers can verify you and reach you.</p></div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap">
+    <div class="name">B &middot; <b>Your Volt brand, premium</b> &nbsp;milesponce.com, leveled up</div>
+    <div class="note">Your actual brand: warm-neutral black, volt green, DM Sans, pill button. Same palette as your site, but with the premium spacing and type of the Knowledge deck (and no techy mono). The volt reads as one confident pop instead of a glow. On-brand and modern.</div>
+    <div class="sw"><span style="background:#0D0D0C"></span><span style="background:#171715"></span><span style="background:#C6FF2E"></span><span style="background:#A6A498"></span><span style="background:#F6F5EF"></span><span class="lab">DM Sans</span></div>
+  </div>
+</section>
+
+<section class="band tC" id="C">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; Growth Blueprint</div>
+    <h1>You hold TWIC, TSA air cargo clearance, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. When a buyer goes looking for a courier they can trust, the trust you earned never reaches them. Here is where it slips.</p>
+    <div class="metrics">
+      <div class="metric"><div class="n">TWIC</div><div class="l">Credential held</div></div>
+      <div class="metric"><div class="n">TSA</div><div class="l">Air cargo cleared</div></div>
+      <div class="metric"><div class="n">HIPAA</div><div class="l">Aware, medical</div></div>
+      <div class="metric"><div class="n">Gov</div><div class="l">Active contracts</div></div>
+    </div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="step"><span class="num">1</span><div><h3>Build the credibility front door</h3><p>A real ANW site that leads with the proof a buyer needs, plus a quote form. Now buyers can verify you and reach you.</p></div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap">
+    <div class="name">C &middot; <b>Vanilla Paper</b> &nbsp;the warm, editorial, printed-dossier feel</div>
+    <div class="note">Warm ivory paper, ink, a Fraunces serif headline, DM Sans body, with your volt green as a highlighter. This is the "brown paper / warm" look you described. Feels hand-made and human, the furthest thing from AI. Light instead of dark, so it stands apart.</div>
+    <div class="sw"><span style="background:#F3ECDC"></span><span style="background:#FAF4E7"></span><span style="background:#221C12"></span><span style="background:#9A6B23"></span><span style="background:#C6FF2E"></span><span class="lab">Fraunces + DM Sans</span></div>
+  </div>
+</section>
+
+<section class="band tD" id="D">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; Growth Blueprint</div>
+    <h1>You hold TWIC, TSA air cargo clearance, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. When a buyer goes looking for a courier they can trust, the trust you earned never reaches them. Here is where it slips.</p>
+    <div class="metrics">
+      <div class="metric"><div class="n">TWIC</div><div class="l">Credential held</div></div>
+      <div class="metric"><div class="n">TSA</div><div class="l">Air cargo cleared</div></div>
+      <div class="metric"><div class="n">HIPAA</div><div class="l">Aware, medical</div></div>
+      <div class="metric"><div class="n">Gov</div><div class="l">Active contracts</div></div>
+    </div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="step"><span class="num">1</span><div><h3>Build the credibility front door</h3><p>A real ANW site that leads with the proof a buyer needs, plus a quote form. Now buyers can verify you and reach you.</p></div></div>
+    <a class="btn">Build my custom plan</a>
+  </div>
+  <div class="cap">
+    <div class="name">D &middot; <b>Premium Dark + Volt</b> &nbsp;my pick: the Knowledge-deck base in your brand color</div>
+    <div class="note">The exact premium recipe from your deck (navy-charcoal, soft blue-grey text, Manrope), but the accent is your volt green instead of Knowledge's gold. Premium and warm like the brands you named, dark and cinematic like Netflix, and 100% your brand. This is the one I'd build.</div>
+    <div class="sw"><span style="background:#111720"></span><span style="background:#161E2A"></span><span style="background:#C6FF2E"></span><span style="background:#9FB0C9"></span><span style="background:#fff"></span><span class="lab">Manrope</span></div>
+  </div>
+</section>
+
+</body>
+</html>
