@@ -60,13 +60,23 @@
     --leakbg:#181c22;--leakbd:#2f2a1c;--leaktag:#C6FF2E;
     --squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%23C6FF2E' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
   .dark.band::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -10%, rgba(120,150,190,.10), transparent 60%);pointer-events:none;}
+
+  /* ===== BLUE + ORANGE · THRST inspired (warm charcoal, orange energy, blue-to-orange flame gradient headline) ===== */
+  .thrst{--bg:#0F131A;--ink:#FFFFFF;--lede:#BFC7D4;--muted:#93A0B2;--border:#252c37;
+    --display:'Manrope',sans-serif;--dw:800;--ls:-.02em;
+    --accent:#FF7A1A;--accenton:#1a0d02;--accentink:#FF8A33;
+    --chipbg:#181d26;--chipbd:#2a323e;--chipink:#C6CFDC;
+    --leakbg:#181c22;--leakbd:#3a2a18;--leaktag:#FF8A33;--squiggle:none;}
+  .thrst .hl{background:linear-gradient(90deg,#4AA8FF 0%,#FF7A1A 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;padding-bottom:0;}
+  .thrst.band::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -8%, rgba(255,122,26,.13), transparent 60%);pointer-events:none;}
 </style>
 </head>
 <body>
 <nav class="top">
-  <span class="t">Two refined directions</span>
+  <span class="t">Three directions</span>
   <a href="#light">1 · Warm Light (Ali-style)</a>
   <a href="#dark">2 · Premium Dark (Genflow-style)</a>
+  <a href="#thrst" style="border-color:#FF7A1A;color:#FF8A33;">3 · Blue + Orange (THRST)</a>
 </nav>
 
 <section class="band light" id="light">
@@ -100,6 +110,23 @@
   <div class="cap">
     <div class="name">2 &middot; <b>Premium Dark</b> &nbsp;inspired by Genflow / Netflix</div>
     <div class="note">Warm-charcoal with a subtle depth glow, bold Manrope headline, soft blue-grey text, volt used with restraint. Cinematic and premium like the dark brands you named. Same DNA: credential chips, hand-drawn underline, trust row, photo, pill buttons.</div>
+  </div>
+</section>
+
+<section class="band thrst" id="thrst">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. The trust you earned in the field never reaches the person signing the contract. Here is where it slips.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Cargo insured</span><span class="chip">Gov contracts</span></div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div><div class="tr"><span class="ck">&check;</span>Yours to keep either way</div></div>
+    <a class="btn">Build my custom plan</a>
+    <div class="sig"><div class="ph">YOUR<br>PHOTO</div><div class="nm">Miles<span>Miles Builds Systems</span></div></div>
+  </div>
+  <div class="cap">
+    <div class="name">3 &middot; <b>Blue + Orange</b> &nbsp;inspired by Mike Thurston&rsquo;s THRST app</div>
+    <div class="note">Warm charcoal, orange as the energy accent, and the blue-to-orange flame gradient on the key line (THRST&rsquo;s signature). Athletic and premium. Note: this drops your volt green for THRST&rsquo;s blue/orange, so it is a brand-color decision, not just a skin. Same DNA otherwise: chips, trust row, photo, pill button.</div>
   </div>
 </section>
 </body>
