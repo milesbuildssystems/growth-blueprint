@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blueprint, two refined directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#0c0c0c;font-family:'DM Sans',system-ui,sans-serif;}
+  .top{position:sticky;top:0;z-index:5;background:rgba(12,12,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid #222;padding:14px 24px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .top .t{color:#fff;font-weight:700;font-size:14px;margin-right:6px;}
+  .top a{color:#ccc;text-decoration:none;font-size:12.5px;font-weight:600;border:1px solid #333;border-radius:20px;padding:6px 14px;}
+  .top a:hover{color:#fff;border-color:#666;}
+
+  /* shared, var-driven */
+  .band{padding:58px 24px 34px;background:var(--bg);position:relative;}
+  .doc{max-width:680px;margin:0 auto;position:relative;z-index:1;}
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+  .eyebrow b{color:var(--accentink);font-weight:700;}
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+  h1{font-family:var(--display);font-weight:var(--dw);font-size:clamp(32px,4.7vw,46px);line-height:1.07;letter-spacing:var(--ls,-.01em);color:var(--ink);margin-bottom:22px;}
+  .hl{color:var(--ink);background-image:var(--squiggle);background-repeat:no-repeat;background-position:0 100%;background-size:100% .48em;padding-bottom:.1em;}
+  .lede{font-size:18px;line-height:1.6;color:var(--lede);max-width:56ch;margin-bottom:26px;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
+  .chip{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--chipink);background:var(--chipbg);border:1px solid var(--chipbd);border-radius:999px;padding:7px 15px;}
+  .leak{background:var(--leakbg);border:1px solid var(--leakbd);border-radius:16px;padding:20px 24px;margin-bottom:24px;}
+  .leak .tag{font-family:'DM Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--leaktag);display:block;margin-bottom:9px;}
+  .leak p{color:var(--ink);line-height:1.58;font-size:15.5px;}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:26px;}
+  .tr{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);font-weight:500;}
+  .tr .ck{width:18px;height:18px;border-radius:50%;background:var(--accent);color:var(--accenton);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
+  .btn{display:inline-block;background:var(--accent);color:var(--accenton);font-family:'DM Sans',sans-serif;font-weight:700;font-size:15.5px;text-decoration:none;padding:15px 32px;border-radius:999px;}
+  .sig{margin-top:26px;padding-top:18px;border-top:1px solid var(--border);display:flex;align-items:center;gap:13px;}
+  .sig .ph{width:44px;height:44px;border-radius:50%;background:var(--chipbg);border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--muted);text-align:center;line-height:1.1;font-weight:600;}
+  .sig .nm{font-family:var(--display);font-weight:var(--dw);color:var(--ink);font-size:15px;}
+  .sig .nm span{color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:500;font-size:13px;display:block;margin-top:1px;}
+
+  .cap{max-width:680px;margin:32px auto 0;padding-top:20px;border-top:1px solid var(--border);}
+  .cap .name{font-family:var(--display);font-weight:var(--dw);color:var(--ink);font-size:16px;margin-bottom:4px;}
+  .cap .name b{color:var(--accentink);}
+  .cap .note{color:var(--muted);font-size:13.5px;line-height:1.5;max-width:62ch;}
+
+  /* ===== LIGHT · Ali-Abdaal inspired (warm paper, Fraunces serif, hand-drawn volt underline) ===== */
+  .light{--bg:#F4EDDF;--ink:#221C12;--lede:#4C4534;--muted:#837655;--border:#E5D9C0;
+    --display:'Fraunces',Georgia,serif;--dw:600;--ls:-.005em;
+    --accent:#C6FF2E;--accenton:#20240a;--accentink:#8a6a1e;
+    --chipbg:#FBF6EA;--chipbd:#E5D9C0;--chipink:#5A5140;
+    --leakbg:#FAF4E6;--leakbd:#E5D9C0;--leaktag:#B4462F;
+    --squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%23C6FF2E' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
+
+  /* ===== DARK · Genflow / Netflix inspired (warm-charcoal + depth, Manrope, restrained volt) ===== */
+  .dark{--bg:#111318;--ink:#FFFFFF;--lede:#B9C1CD;--muted:#8A94A3;--border:#262b34;
+    --display:'Manrope',sans-serif;--dw:800;--ls:-.02em;
+    --accent:#C6FF2E;--accenton:#0d1206;--accentink:#C6FF2E;
+    --chipbg:#191d24;--chipbd:#2b313b;--chipink:#C7CEDA;
+    --leakbg:#181c22;--leakbd:#2f2a1c;--leaktag:#C6FF2E;
+    --squiggle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 45 3 75 12 105 7 S 172 3 197 8' fill='none' stroke='%23C6FF2E' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");}
+  .dark.band::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -10%, rgba(120,150,190,.10), transparent 60%);pointer-events:none;}
+</style>
+</head>
+<body>
+<nav class="top">
+  <span class="t">Two refined directions</span>
+  <a href="#light">1 · Warm Light (Ali-style)</a>
+  <a href="#dark">2 · Premium Dark (Genflow-style)</a>
+</nav>
+
+<section class="band light" id="light">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. The trust you earned in the field never reaches the person signing the contract. Here is where it slips.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Cargo insured</span><span class="chip">Gov contracts</span></div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div><div class="tr"><span class="ck">&check;</span>Yours to keep either way</div></div>
+    <a class="btn">Build my custom plan</a>
+    <div class="sig"><div class="ph">YOUR<br>PHOTO</div><div class="nm">Miles<span>Miles Builds Systems</span></div></div>
+  </div>
+  <div class="cap">
+    <div class="name">1 &middot; <b>Warm Light</b> &nbsp;inspired by Ali Abdaal</div>
+    <div class="note">Warm paper, a Fraunces serif headline, DM Sans body, credential chips instead of a dashboard grid, a hand-drawn volt underline, a trust row, and a spot for your photo. Friendly, human, premium, the closest match to how the top creator-educators actually look. Pill buttons throughout.</div>
+  </div>
+</section>
+
+<section class="band dark" id="dark">
+  <div class="doc">
+    <div class="eyebrow">Prepared for Rickford Alexander &middot; <b>Growth Blueprint</b></div>
+    <h1>You hold TWIC, TSA air cargo, and active government contracts. The hospitals and agencies that need exactly that <span class="hl">can&rsquo;t find any of it</span>.</h1>
+    <p class="lede">You built ANW from one vehicle into a compliant, multi-state medical and air cargo operation. The trust you earned in the field never reaches the person signing the contract. Here is where it slips.</p>
+    <div class="chips"><span class="chip">TWIC credentialed</span><span class="chip">TSA air cargo</span><span class="chip">DOT compliant</span><span class="chip">HIPAA-aware</span><span class="chip">Cargo insured</span><span class="chip">Gov contracts</span></div>
+    <div class="leak"><span class="tag">The leak</span><p>You do the credentialed work in the field, then hand the buyer nothing to confirm it. Every contract starts from zero trust instead of the proof you already earned.</p></div>
+    <div class="trust"><div class="tr"><span class="ck">&check;</span>Built from the outside</div><div class="tr"><span class="ck">&check;</span>No charge, no catch</div><div class="tr"><span class="ck">&check;</span>Yours to keep either way</div></div>
+    <a class="btn">Build my custom plan</a>
+    <div class="sig"><div class="ph">YOUR<br>PHOTO</div><div class="nm">Miles<span>Miles Builds Systems</span></div></div>
+  </div>
+  <div class="cap">
+    <div class="name">2 &middot; <b>Premium Dark</b> &nbsp;inspired by Genflow / Netflix</div>
+    <div class="note">Warm-charcoal with a subtle depth glow, bold Manrope headline, soft blue-grey text, volt used with restraint. Cinematic and premium like the dark brands you named. Same DNA: credential chips, hand-drawn underline, trust row, photo, pill buttons.</div>
+  </div>
+</section>
+</body>
+</html>
