@@ -1,0 +1,5 @@
+# Cloudflare Pages per-path headers.
+# Every per-prospect path gets noindex (deploy.py appends a block per slug).
+# The root sample stays indexable.
+/anw/*
+  X-Robots-Tag: noindex
