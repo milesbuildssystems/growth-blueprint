@@ -3,3 +3,6 @@
 # The root sample stays indexable.
 /anw/*
   X-Robots-Tag: noindex
+
+/brittneybatla-7uqq/*
+  X-Robots-Tag: noindex

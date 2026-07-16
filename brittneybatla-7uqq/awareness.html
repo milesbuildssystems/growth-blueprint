@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Awareness Ladder · Miles Builds Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#F2F0EB; --surface:#EAE7DE; --raised:#FBFAF7; --border:#DCD8CE;
+--text:#0F0F12; --muted:#57544C; --faint:#8A867C;
+--accent:#5B4BD6; --accent-light:#493AC2; --accent-dim:rgba(91,75,214,0.10);
+--danger:#E05252; --danger-dim:rgba(224,82,82,0.09);
+--success:#4CAF7D;
+--display:'DM Sans','Segoe UI',system-ui,sans-serif;
+--body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+--mono:'Space Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);
+line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:72px 28px 96px;}
+a.back{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--muted);
+text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;
+border:1px solid var(--border);border-radius:6px;padding:8px 14px;transition:color .15s,border-color .15s;}
+a.back:hover{color:var(--accent);border-color:var(--accent);}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:0.22em;
+text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--border);}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;line-height:1.14;letter-spacing:-0.01em;}
+h1{font-size:clamp(30px,5vw,44px);margin:20px 0 18px;font-weight:700;}
+h1 .amber{color:var(--accent);}
+.lede{font-size:18px;color:var(--text);max-width:62ch;}
+.lede em{color:var(--accent-light);font-style:normal;}
+section{margin-top:64px;}
+h2{font-size:25px;margin:18px 0 16px;}
+p{margin:0 0 18px;max-width:64ch;}
+.muted{color:var(--muted);}
+strong{color:var(--text);font-weight:600;}
+em.hl{color:var(--accent-light);font-style:normal;font-weight:500;}
+/* avatar card */
+.avatar{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:12px;padding:28px 30px;margin:24px 0;}
+.avatar .who{font-family:var(--display);font-weight:600;font-size:20px;color:var(--text);margin-bottom:4px;}
+.avatar .sub{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+color:var(--accent);margin-bottom:16px;}
+.avatar ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;}
+.avatar li{padding-left:24px;position:relative;color:var(--text);font-size:15.5px;}
+.avatar li::before{content:"";position:absolute;left:2px;top:10px;width:6px;height:6px;
+background:var(--accent);border-radius:50%;}
+.avatar li b{color:var(--text);font-weight:600;}
+.avatar .buy{margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
+font-size:16px;color:var(--text);}
+.avatar .buy b{color:var(--accent-light);font-family:var(--display);font-weight:600;}
+/* quotes */
+.quotes{display:flex;flex-direction:column;gap:12px;margin:22px 0;}
+.quote{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);
+border-radius:8px;padding:16px 20px;font-size:16px;color:var(--text);font-style:italic;}
+.quotes-note{font-size:14px;color:var(--muted);}
+/* content read */
+.read{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+padding:6px 26px;margin:22px 0;}
+.read .row{padding:18px 0;border-bottom:1px solid var(--border);}
+.read .row:last-child{border-bottom:none;}
+.read .k{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+color:var(--accent);margin-bottom:7px;}
+.read .v{font-size:15.5px;color:var(--text);margin:0;}
+.read .v b{color:var(--text);font-weight:600;}
+/* path */
+.path{display:flex;flex-direction:column;gap:2px;margin:22px 0;
+border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.pstep{background:var(--surface);padding:18px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;}
+.pstep + .pstep{border-top:1px solid var(--border);}
+.pstep .num{font-family:var(--mono);font-size:12px;color:var(--muted);
+border:1px solid var(--border);border-radius:50%;width:30px;height:30px;
+display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums;margin-top:1px;}
+.pstep .v{font-size:15.5px;color:var(--text);margin:0;}
+.pstep.brk{background:var(--danger-dim);}
+.pstep.brk .num{color:var(--danger);border-color:rgba(224,82,82,0.5);}
+.pstep.brk .v b{color:var(--danger);}
+.pstep .v b{color:var(--text);font-weight:600;}
+.breakline{background:var(--danger-dim);border:1px solid rgba(224,82,82,0.28);border-radius:10px;
+padding:22px 26px;margin:22px 0;}
+.breakline .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+color:var(--danger);margin-bottom:10px;}
+.breakline p{margin:0;}
+/* honesty */
+.honest{background:var(--surface);border:1px dashed var(--border);border-radius:10px;padding:22px 26px;margin:22px 0;}
+.honest p{margin:0 0 12px;font-size:15px;color:var(--muted);}
+.honest p:last-child{margin-bottom:0;}
+.honest b{color:var(--text);}
+/* bottom cta back to blueprint */
+.tocta{background:linear-gradient(180deg,var(--raised),var(--surface));
+border:1px solid var(--border);border-radius:14px;padding:32px 30px;margin-top:56px;text-align:left;}
+.btn{display:inline-block;background:var(--accent);color:#F2F0EB;font-family:var(--display);
+font-weight:600;font-size:16px;text-decoration:none;padding:15px 30px;border-radius:8px;margin-top:14px;
+letter-spacing:-0.01em;transition:transform .15s ease,background .15s ease;}
+.btn:hover{background:var(--accent-light);transform:translateY(-1px);}
+.btn:focus-visible{outline:2px solid var(--accent-light);outline-offset:3px;}
+footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--border);font-size:14px;color:var(--muted);}
+footer .who{color:var(--text);font-family:var(--display);font-weight:500;font-size:16px;margin-bottom:8px;}
+.mark{font-family:var(--display);font-weight:700;color:var(--text);}
+.mark b{color:var(--accent);}
+.sample{position:fixed;top:14px;right:14px;font-family:var(--mono);font-size:10px;
+letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border:1px solid var(--border);
+border-radius:4px;padding:4px 9px;background:rgba(242,240,235,0.85);backdrop-filter:blur(4px);}
+@media (max-width:560px){.wrap{padding:52px 20px 72px;} .pstep{grid-template-columns:auto 1fr;gap:14px;}}
+@media (prefers-reduced-motion:no-preference){
+.wrap>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;}
+.wrap>*:nth-child(3){animation-delay:.05s;} .wrap>section:nth-of-type(1){animation-delay:.1s;}
+@keyframes rise{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+}
+.ladder{display:flex;flex-direction:column;gap:2px;margin:22px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.rung{background:var(--surface);padding:14px 20px;display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:baseline;}
+.rung + .rung{border-top:1px solid var(--border);}
+.rung .stage{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);}
+.rung .line{font-size:15px;color:var(--text);margin:0;}
+.rung.here{background:var(--accent-dim);}
+.rung.here .stage{color:var(--accent);}
+.rung .tag{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:#F2F0EB;background:var(--accent);border-radius:3px;padding:1px 6px;margin-left:8px;vertical-align:middle;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--accent);font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;padding:12px 20px;border:1px solid var(--accent);border-radius:8px;white-space:nowrap;transition:background .15s ease,transform .15s ease;}
+.btn-ghost:hover{background:var(--accent-dim);transform:translateY(-1px);}
+.stagecard{background:linear-gradient(180deg,var(--raised),var(--surface));border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:16px 0;}
+.stagecard .sh{display:flex;align-items:center;gap:12px;}
+.stagecard .sn{font-family:var(--display);font-weight:600;font-size:20px;color:var(--text);}
+.stagecard .temp{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:3px;padding:2px 8px;color:var(--muted);}
+.stagecard .blk{margin-top:14px;}
+.stagecard .lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
+.stagecard p{margin:0;font-size:15.5px;color:var(--text);}
+@media(max-width:560px){.rung{grid-template-columns:1fr;gap:4px;}}
+.tabs{display:flex;gap:2px;margin:0 0 10px;border-bottom:1px solid var(--border);}.tab{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:12px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;white-space:nowrap;}.tab:hover{color:var(--text);}.tab.active{color:var(--accent);border-bottom-color:var(--accent);}@media(max-width:560px){.tab{padding:10px 11px;font-size:11px;letter-spacing:0.04em;}}.reel{display:flex;gap:16px;align-items:center;margin:24px 0 6px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;transition:border-color .15s,transform .15s;max-width:430px;}.reel:hover{border-color:var(--accent);transform:translateY(-1px);}.reel-thumb{position:relative;width:74px;height:104px;border-radius:8px;flex:none;background:linear-gradient(150deg,#EAE7DE,#DCD8CE);border:1px solid var(--border);overflow:hidden;}.reel-thumb img{width:100%;height:100%;object-fit:cover;}.reel-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;}.reel-ey{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}.reel-title{font-family:var(--display);font-weight:600;font-size:16px;color:var(--text);line-height:1.2;}.reel-views{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:3px;}.reel-link{font-family:var(--display);font-weight:600;font-size:13px;color:var(--accent);margin-top:8px;}.btn-ghost{background:var(--raised);color:var(--accent);border:1px solid var(--accent);border-radius:8px;padding:13px 22px;font-family:var(--display);font-weight:600;font-size:14.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,0.08);transition:background .15s ease,color .15s ease,transform .15s ease;}.btn-ghost:hover{background:var(--accent);color:#F2F0EB;transform:translateY(-1px);}</style>
+</head>
+<body>
+<div class="sample">Sample &middot; template demo</div>
+<div class="wrap">
+<nav class="tabs"><a class="tab" href="index.html">Blueprint</a><a class="tab" href="research.html">Research</a><a class="tab active" href="awareness.html">Awareness</a></nav>
+<div class="eyebrow">The awareness ladder &middot; prepared for Brittney Batla</div>
+<h1>Where every buyer sits, and what moves them <span class="amber">up</span>.</h1>
+<p class="lede">Every person who lands on your Reels sits on one of five rungs. The mistake is talking to all of them the same way. Here is what each rung believes, and the one thing that moves them up to the next.</p>
+<div class="stagecard"><div class="sh"><span class="sn">Unaware</span><span class="temp">Cold</span></div><div class="blk"><div class="lbl">What they believe right now</div><p>&ldquo;My business is fine, I will get to Instagram when I have time.&rdquo; She has not connected slow growth to the missing system, so there is nothing to solve yet.</p></div><div class="blk"><div class="lbl">What moves them up</div><p>A Reel that makes the real cost concrete (what inconsistent posting is quietly costing her in leads), so &ldquo;later&rdquo; starts to feel expensive.</p></div></div><div class="stagecard"><div class="sh"><span class="sn">Problem-aware</span><span class="temp">Cool</span></div><div class="blk"><div class="lbl">What they believe right now</div><p>&ldquo;I am just bad at this content thing.&rdquo; She blames herself, not the missing system.</p></div><div class="blk"><div class="lbl">What moves them up</div><p>Show her it is the missing system, not her discipline. That reframe is what makes her want your AI approach.</p></div></div><div class="stagecard"><div class="sh"><span class="sn">Solution-aware</span><span class="temp">Warming</span></div><div class="blk"><div class="lbl">What they believe right now</div><p>&ldquo;AI works for tech people. I am not that person.&rdquo; Comparing, skeptical it will work for her.</p></div><div class="blk"><div class="lbl">What moves them up</div><p>Show why your AI Reel approach works for a busy non-technical owner, not a prompt engineer.</p></div></div><div class="stagecard"><div class="sh"><span class="sn">Product-aware</span><span class="temp">Warm</span></div><div class="blk"><div class="lbl">What they believe right now</div><p>&ldquo;I trust Brittney. I will grab the coaching call or Academy when I am ready.&rdquo; Warm, but no reason to act today.</p></div><div class="blk"><div class="lbl">What moves them up</div><p>A clear, simple offer with a first step she can take today, plus proof from someone who started where she is.</p></div></div><div class="stagecard"><div class="sh"><span class="sn">Most-aware</span><span class="temp">Hot</span></div><div class="blk"><div class="lbl">What they believe right now</div><p>&ldquo;Just tell me what to do first.&rdquo; Sold on you, she needs the path.</p></div><div class="blk"><div class="lbl">What moves them up</div><p>One page, one button, no friction. The first thing your captured list should see.</p></div></div>
+<div class="tocta">
+<div class="eyebrow">Back to the map</div>
+<h2>That is your whole audience, on one ladder.</h2>
+<p>Meet each person where they actually are, and more of them climb toward a yes.</p>
+<a class="btn" href="research.html">Back to your research &rarr;</a>
+</div>
+<footer>
+<div class="who">Miles &middot; <span class="mark">Miles Builds <b>Systems</b></span></div>
+<p class="muted">I build the backend that turns an audience into a system that runs without you. This research was made for you. No charge, no catch.</p>
+</footer>
+</div>
+</body>
+</html>
